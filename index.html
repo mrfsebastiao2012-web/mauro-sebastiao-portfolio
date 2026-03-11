@@ -3,816 +3,936 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mauro Roberto F. Sebastião — IT Systems Administrator</title>
-<meta name="description" content="Portfolio profissional de Mauro Roberto F. Sebastião — Administrador de Sistemas de TI com 15+ anos de experiência.">
+<title>Mauro Sebastião — IT Systems Administrator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-:root{--bg:#09090e;--bg2:#0f0f16;--surface:#14141d;--surface2:#1a1a26;--border:rgba(255,255,255,0.06);--accent:#c8a96e;--accent2:#e8c98e;--text:#e4e4f0;--text2:#8888a8;--text3:#50506a;--white:#fff;--green:#4ade80;--red:#f87171;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;overflow-x:hidden;}
-::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--accent);}
+:root{--primary:#1a3a5c;--accent:#2d7dd2;--accent2:#5ba4f5;--accent3:#e8f2ff;--bg:#f5f7fb;--surface:#fff;--text:#1c2340;--muted:#6b7a99;--border:#e2e8f0;--sh:0 4px 24px rgba(26,58,92,.09);--sh2:0 12px 48px rgba(26,58,92,.14);--r:16px;--nh:68px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid transparent;transition:all 0.4s;}
-nav.scrolled{background:rgba(9,9,14,0.95);border-bottom-color:var(--border);backdrop-filter:blur(20px);padding:1rem 3rem;}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:var(--white);cursor:pointer;}
-.nav-logo span{color:var(--accent);}
-.nav-links{display:flex;gap:2.5rem;list-style:none;}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.2s;}
-.nav-links a:hover{color:var(--accent);}
-.nav-cta{display:flex;align-items:center;gap:1rem;}
-.btn-outline{padding:0.45rem 1.1rem;border:1px solid var(--accent);color:var(--accent);background:transparent;font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem;}
-.btn-outline:hover{background:var(--accent);color:var(--bg);}
-.btn-primary{padding:0.45rem 1.3rem;background:var(--accent);color:var(--bg);border:1px solid var(--accent);font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem;}
-.btn-primary:hover{background:var(--accent2);}
-.nav-hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.3rem;cursor:pointer;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nh);background:rgba(245,247,251,.93);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 6%}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--primary);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.87rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.lang-sw{display:flex;gap:3px;background:var(--border);border-radius:20px;padding:3px}
+.lang-btn{padding:4px 13px;border-radius:16px;border:none;background:transparent;cursor:pointer;font-size:.77rem;font-weight:700;color:var(--muted);transition:all .2s;font-family:'DM Sans',sans-serif}
+.lang-btn.active{background:var(--surface);color:var(--primary);box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.btn-adm{padding:8px 18px;border-radius:20px;background:var(--primary);color:#fff;border:none;cursor:pointer;font-size:.82rem;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .2s}
+.btn-adm:hover{background:var(--accent)}
 
-#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,169,110,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,0.025) 1px,transparent 1px);background-size:50px 50px;}
-.hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(200,169,110,0.07) 0%,transparent 65%);top:50%;right:-150px;transform:translateY(-50%);}
-.hero-content{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1;}
-.hero-label{display:inline-flex;align-items:center;gap:0.7rem;color:var(--accent);font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:2rem;}
-.hero-label::before{content:'';width:28px;height:1px;background:var(--accent);}
-.pulse{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
-.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7.5vw,6.5rem);font-weight:300;line-height:1.0;letter-spacing:-0.02em;color:var(--white);margin-bottom:0.3rem;}
-.hero-name strong{font-weight:600;color:var(--accent);display:block;}
-.hero-name em{font-style:italic;font-weight:300;font-size:0.6em;color:var(--text2);}
-.hero-sub{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:500;color:var(--text2);letter-spacing:0.08em;margin:1.2rem 0 1.5rem;display:flex;align-items:center;gap:1rem;}
-.hero-sub hr{flex:none;width:60px;border:none;border-top:1px solid var(--border);}
-.hero-badges{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:2.2rem;}
-.badge{padding:0.22rem 0.65rem;background:var(--surface);border:1px solid var(--border);font-size:0.62rem;color:var(--text3);letter-spacing:0.06em;}
-.badge.hi{border-color:rgba(200,169,110,0.4);color:var(--accent);}
-.hero-stats{display:flex;gap:3rem;margin-bottom:2.8rem;}
-.stat-item{display:flex;flex-direction:column;gap:0.2rem;}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--white);line-height:1;}
-.stat-num span{color:var(--accent);}
-.stat-label{font-size:0.63rem;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase;}
-.hero-actions{display:flex;gap:1rem;align-items:center;}
-.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;color:var(--text3);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;}
-.hero-scroll::after{content:'';width:1px;height:32px;background:linear-gradient(var(--accent),transparent);margin-top:0.3rem;}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;gap:4rem;padding:calc(var(--nh)+5rem) 6% 5rem;position:relative;overflow:hidden}
+.blob1{position:absolute;top:-150px;right:-80px;width:560px;height:560px;background:radial-gradient(circle,rgba(45,125,210,.12) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.blob2{position:absolute;bottom:-80px;left:5%;width:380px;height:380px;background:radial-gradient(circle,rgba(91,164,245,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-c{flex:1;max-width:580px;z-index:1}
+.badge{display:inline-block;padding:6px 16px;background:rgba(45,125,210,.12);color:var(--accent);border-radius:20px;font-size:.79rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.4rem}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,3.9rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem;color:var(--primary)}
+.hero h1 span{color:var(--accent)}
+.hero-sub{font-size:1rem;color:var(--muted);margin-bottom:2rem;max-width:440px;font-weight:400}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-p{padding:14px 30px;border-radius:30px;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:.92rem;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-p:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,125,210,.3)}
+.btn-o{padding:14px 30px;border-radius:30px;border:2px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer;font-size:.92rem;font-weight:600;font-family:'DM Sans',sans-serif;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-o:hover{background:var(--accent3)}
+.stats{display:flex;gap:2.5rem;margin-top:2.5rem}
+.stat-n{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--primary)}
+.stat-l{font-size:.77rem;color:var(--muted);font-weight:500}
+.photo-wrap{flex:0 0 auto;z-index:1}
+.photo-ring{width:300px;height:300px;border-radius:50%;border:4px solid var(--accent2);padding:6px;background:var(--surface);box-shadow:var(--sh2);position:relative}
+.photo-ring::before{content:'';position:absolute;inset:-12px;border-radius:50%;border:2px dashed rgba(45,125,210,.25);animation:spin 20s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-inner{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--accent3),var(--border));display:flex;align-items:center;justify-content:center;font-size:4rem;color:var(--accent);overflow:hidden;font-family:'Playfair Display',serif;font-weight:700}
+.photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:none}
 
-.sw{padding:7rem 3rem;max-width:1200px;margin:0 auto;}
-.sd{padding:7rem 3rem;background:linear-gradient(180deg,transparent,var(--bg2) 15%,var(--bg2) 85%,transparent);}
-.sd>.swi{max-width:1200px;margin:0 auto;}
-.sh{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:4rem;}
-.sn{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--surface2);line-height:1;flex-shrink:0;}
-.st{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;color:var(--white);letter-spacing:-0.02em;}
-.st span{color:var(--accent);}
+/* SECTIONS */
+section{padding:6rem 6%}
+.sec-hdr{text-align:center;margin-bottom:3.5rem}
+.sec-tag{display:inline-block;padding:5px 14px;background:var(--accent3);color:var(--accent);border-radius:20px;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.8rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;color:var(--primary)}
 
-.about-grid{display:grid;grid-template-columns:1fr 400px;gap:5rem;align-items:start;}
-.about-text p{color:var(--text2);margin-bottom:1.4rem;line-height:1.95;font-size:0.83rem;}
-.about-details{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-top:2rem;}
-.di{padding:1rem 1.2rem;background:var(--surface);border:1px solid var(--border);}
-.dl{font-size:0.62rem;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.25rem;}
-.dv{color:var(--text);font-size:0.78rem;}.dv a{color:var(--accent);text-decoration:none;}
-.photo-frame{position:relative;aspect-ratio:3/4;background:var(--surface);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.photo-ph{display:flex;flex-direction:column;align-items:center;gap:1rem;color:var(--text3);text-align:center;padding:1.5rem;}
-.photo-ph i{font-size:3rem;}.photo-ph span{font-size:0.72rem;}
-.photo-frame::after{content:'';position:absolute;inset:0;border:1px solid var(--accent);opacity:0.2;transform:translate(10px,10px);pointer-events:none;}
+/* ABOUT */
+#about{background:var(--surface)}
+.about-g{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;max-width:1100px;margin:0 auto}
+.about-p{color:var(--muted);margin-bottom:1rem;line-height:1.8;font-size:.95rem}
+.info-g{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.5rem}
+.info-it{padding:.9rem 1rem;background:var(--bg);border-radius:10px;border:1px solid var(--border)}
+.info-l{font-size:.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.info-v{font-size:.88rem;color:var(--text);font-weight:500;margin-top:.15rem}
+.cert-card{background:var(--bg);border-radius:12px;padding:1.2rem 1.4rem;border:1px solid var(--border);margin-bottom:.8rem;transition:all .3s}
+.cert-card:hover{border-color:var(--accent2);box-shadow:var(--sh)}
+.cert-title{font-weight:600;color:var(--primary);font-size:.92rem}
+.cert-sub{font-size:.82rem;color:var(--muted);margin-top:.2rem}
 
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-.skill-card{background:var(--surface);border:1px solid var(--border);padding:1.8rem;transition:all 0.3s;position:relative;overflow:hidden;}
-.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
-.skill-card:hover{border-color:rgba(200,169,110,0.3);transform:translateY(-3px);}
-.skill-card:hover::before{transform:scaleX(1);}
-.skill-icon{width:38px;height:38px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--accent);font-size:1rem;}
-.skill-name{font-family:'Syne',sans-serif;font-size:0.88rem;font-weight:600;color:var(--white);margin-bottom:0.8rem;}
-.sbl{display:flex;justify-content:space-between;font-size:0.63rem;color:var(--text3);margin-bottom:0.3rem;}
-.sbr{height:2px;background:var(--surface2);}
-.sbf{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.5s ease;}
-.tags{display:flex;flex-wrap:wrap;gap:0.32rem;margin-top:0.8rem;}
-.tag{padding:0.18rem 0.55rem;background:var(--surface2);border:1px solid var(--border);font-size:0.61rem;color:var(--text3);}
+/* SKILLS */
+#skills{background:var(--bg)}
+.skills-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto}
+.sk-card{background:var(--surface);border-radius:var(--r);padding:1.4rem;border:1px solid var(--border);box-shadow:var(--sh);transition:all .3s}
+.sk-card:hover{transform:translateY(-4px);box-shadow:var(--sh2);border-color:var(--accent2)}
+.sk-icon{font-size:1.6rem;margin-bottom:.6rem}
+.sk-name{font-weight:600;color:var(--primary);margin-bottom:.5rem;font-size:.91rem}
+.sk-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.sk-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width 1s ease}
+.sk-pct{font-size:.73rem;color:var(--muted);margin-top:.35rem}
 
-.timeline{position:relative;padding-left:1.5rem;}
-.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:linear-gradient(var(--accent),rgba(200,169,110,0.1) 80%,transparent);}
-.tli{position:relative;padding-bottom:2.8rem;padding-left:2rem;}
-.tld{position:absolute;left:-5px;top:6px;width:10px;height:10px;background:var(--accent);border:2px solid var(--bg);border-radius:50%;}
-.tld.cur{background:var(--green);box-shadow:0 0 0 4px rgba(74,222,128,0.15);}
-.tl-date{font-size:0.65rem;color:var(--accent);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.35rem;}
-.tl-role{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:0.12rem;}
-.tl-co{color:var(--text2);font-size:0.78rem;margin-bottom:0.7rem;}
-.tl-desc{color:var(--text3);font-size:0.77rem;line-height:1.85;max-width:660px;padding-left:1rem;}
-.tl-desc li{margin-bottom:0.2rem;}
-.tl-tags{display:flex;flex-wrap:wrap;gap:0.32rem;margin-top:0.7rem;}
+/* TIMELINE */
+#experience{background:var(--surface)}
+.tl{position:relative;max-width:820px;margin:0 auto;padding-left:2.2rem}
+.tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2));border-radius:2px}
+.tl-item{position:relative;padding-left:2.2rem;margin-bottom:2.5rem}
+.tl-dot{position:absolute;left:-2.5rem;top:.35rem;width:15px;height:15px;border-radius:50%;background:var(--accent);border:3px solid var(--surface);box-shadow:0 0 0 2px var(--accent)}
+.tl-date{font-size:.76rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem}
+.tl-title{font-size:1.03rem;font-weight:700;color:var(--primary);margin-bottom:.2rem}
+.tl-co{font-size:.86rem;font-weight:500;color:var(--accent);margin-bottom:.55rem}
+.tl-desc{font-size:.86rem;color:var(--muted);line-height:1.75}
+.tl-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+.tl-tag{padding:3px 10px;background:var(--accent3);color:var(--accent);border-radius:12px;font-size:.72rem;font-weight:600}
 
-.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;grid-auto-rows:210px;}
-.gi{background:var(--surface);border:1px solid var(--border);overflow:hidden;position:relative;cursor:pointer;transition:all 0.3s;}
-.gi.wide{grid-column:span 2;}.gi.tall{grid-row:span 2;}
-.gi img,.gi video{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;}
-.gi:hover img,.gi:hover video{transform:scale(1.05);}
-.go{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,0.75));opacity:0;transition:opacity 0.3s;display:flex;align-items:flex-end;padding:1rem;}
-.gi:hover .go{opacity:1;}
-.gc{color:var(--white);font-size:0.7rem;}
-.gph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.7rem;color:var(--text3);height:100%;}
-.gph i{font-size:2rem;}.gph span{font-size:0.72rem;text-align:center;padding:0 2rem;}
+/* GALLERY */
+#gallery{background:var(--bg)}
+.gal-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;max-width:1100px;margin:0 auto}
+.gal-it{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--border);position:relative;cursor:pointer;transition:transform .3s}
+.gal-it:hover{transform:scale(1.02)}
+.gal-it img,.gal-it video{width:100%;height:100%;object-fit:cover}
+.gal-empty{grid-column:1/-1;text-align:center;padding:4rem;color:var(--muted);font-size:.93rem}
+.gal-empty-icon{font-size:3rem;margin-bottom:1rem;opacity:.35}
 
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;}
-.pc{background:var(--surface);border:1px solid var(--border);padding:2rem;transition:all 0.3s;}
-.pc:hover{border-color:rgba(200,169,110,0.3);}
-.pc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--surface2);line-height:1;margin-bottom:0.4rem;}
-.pc-title{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:600;color:var(--white);margin-bottom:0.4rem;}
-.pc-desc{font-size:0.77rem;color:var(--text3);line-height:1.8;}
+/* CV SECTION */
+#cv-gen{background:var(--surface)}
+.cv-form{max-width:580px;margin:0 auto}
+.f-g{margin-bottom:1.1rem}
+.f-l{font-size:.8rem;font-weight:700;color:var(--primary);margin-bottom:.35rem;display:block;text-transform:uppercase;letter-spacing:.05em}
+.f-i{width:100%;padding:11px 15px;border:2px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.91rem;color:var(--text);background:var(--bg);transition:border-color .2s;outline:none}
+.f-i:focus{border-color:var(--accent)}
+.cv-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.4rem}
 
-.certs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
-.cc{background:var(--surface);border:1px solid var(--border);padding:1.5rem;transition:all 0.3s;}
-.cc:hover{border-color:rgba(200,169,110,0.3);transform:translateY(-2px);}
-.ci{font-size:1.6rem;color:var(--accent);margin-bottom:0.7rem;}
-.cn{font-family:'Syne',sans-serif;font-size:0.78rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;line-height:1.3;}
-.ciss{font-size:0.67rem;color:var(--text3);margin-bottom:0.3rem;}
-.cyr{font-size:0.62rem;color:var(--accent);}
+/* CONTACT */
+#contact{background:var(--bg)}
+.ct-g{display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1000px;margin:0 auto;align-items:start}
+.ct-info{display:flex;flex-direction:column;gap:.8rem}
+.ct-it{display:flex;align-items:center;gap:1rem;padding:1.1rem;background:var(--surface);border-radius:12px;border:1px solid var(--border)}
+.ct-ico{font-size:1.4rem}
+.ct-dl{font-size:.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.ct-dv{font-size:.88rem;color:var(--text);font-weight:500}
+.ct-form{display:flex;flex-direction:column;gap:.8rem}
+.submit-btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:13px;font-size:.92rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.submit-btn:hover{background:var(--primary)}
 
-.cv-ui{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
-.gf{background:var(--surface);border:1px solid var(--border);padding:2.5rem;}
-.fg{margin-bottom:1.3rem;}
-.fl{display:block;font-size:0.67rem;color:var(--text3);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.4rem;}
-.fi,.fs,.fta{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-family:'DM Mono',monospace;font-size:0.77rem;padding:0.62rem 0.9rem;outline:none;transition:border-color 0.2s;}
-.fi:focus,.fs:focus,.fta:focus{border-color:var(--accent);}
-.fta{min-height:90px;resize:vertical;}.fs option{background:var(--bg);}
-.rg{display:flex;gap:1rem;flex-wrap:wrap;}
-.rl{display:flex;align-items:center;gap:0.4rem;cursor:pointer;font-size:0.75rem;color:var(--text2);}
-.rl input{accent-color:var(--accent);}
-.gp{background:var(--surface);border:1px solid var(--border);padding:2rem;}
-.pt{font-size:0.7rem;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border);}
-.pc2{background:#fff;color:#111;padding:1.5rem;font-family:Georgia,serif;font-size:0.72rem;line-height:1.7;min-height:250px;max-height:420px;overflow-y:auto;}
+/* FOOTER */
+footer{background:var(--primary);color:rgba(255,255,255,.65);padding:2.5rem 6%;text-align:center;font-size:.85rem}
+footer a{color:var(--accent2);text-decoration:none}
+footer strong{color:#fff}
 
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
-.cl{display:flex;flex-direction:column;gap:0.7rem;margin-top:2rem;}
-.clink{display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem;background:var(--surface);border:1px solid var(--border);text-decoration:none;color:var(--text2);transition:all 0.2s;font-size:0.78rem;}
-.clink:hover{border-color:var(--accent);color:var(--white);}
-.clink i{color:var(--accent);width:18px;text-align:center;}
-.cf{display:flex;flex-direction:column;gap:0.9rem;}
+/* MODALS */
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem}
+.overlay.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--r);padding:2.5rem;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--sh2)}
+.modal h2{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--primary);margin-bottom:1.4rem}
+.modal-x{float:right;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1}
 
-footer{border-top:1px solid var(--border);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;}
-.ft{font-size:0.7rem;color:var(--text3);}.ft span{color:var(--accent);}
+/* ADMIN */
+.adm-overlay{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);overflow-y:auto;padding:2rem 1rem}
+.adm-overlay.open{display:block}
+.adm-box{background:var(--surface);border-radius:var(--r);padding:2.5rem;max-width:880px;margin:0 auto;box-shadow:var(--sh2)}
+.adm-box h2{font-family:'Playfair Display',serif;font-size:1.55rem;color:var(--primary);margin-bottom:.3rem}
+.adm-sub{font-size:.87rem;color:var(--muted);margin-bottom:1.8rem}
+.adm-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.atab{padding:8px 18px;border-radius:20px;border:2px solid var(--border);background:transparent;cursor:pointer;font-size:.81rem;font-weight:600;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all .2s}
+.atab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.atab-c{display:none}
+.atab-c.active{display:block}
+.f-g2{margin-bottom:1rem}
+.fl2{font-size:.76rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem;display:block}
+.fi2,.ft2,.fs2{width:100%;padding:10px 13px;border:2px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:.89rem;color:var(--text);background:var(--bg);outline:none;transition:border-color .2s}
+.fi2:focus,.ft2:focus{border-color:var(--accent)}
+.ft2{resize:vertical;min-height:80px}
+.up-area{border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:all .2s;margin-top:.6rem}
+.up-area:hover{border-color:var(--accent);background:var(--accent3)}
+.up-area p{font-size:.87rem;color:var(--muted);margin-top:.4rem}
+.color-row{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.5rem}
+.sw{width:42px;height:42px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s}
+.sw.sel{border-color:var(--text);transform:scale(1.15)}
+.adm-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}
+.save-btn{background:var(--accent);color:#fff;border:none;padding:12px 26px;border-radius:10px;font-size:.91rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.save-btn:hover{background:var(--primary)}
+.cls-btn{background:var(--border);color:var(--text);border:none;padding:12px 20px;border-radius:10px;font-size:.91rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif}
 
-.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;align-items:center;justify-content:center;backdrop-filter:blur(10px);}
-.mo.active{display:flex;}
-.modal{background:var(--surface);border:1px solid var(--border);padding:2.5rem;width:90%;max-width:420px;position:relative;}
-.mc{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--text3);cursor:pointer;font-size:1.1rem;}
-.mc:hover{color:var(--white);}
-.mt{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:0.4rem;}
-.ms{font-size:0.75rem;color:var(--text3);margin-bottom:2rem;}
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.92);align-items:center;justify-content:center}
+.lb.open{display:flex}
+.lb-x{position:absolute;top:1.2rem;right:1.8rem;font-size:2rem;color:#fff;cursor:pointer;background:none;border:none}
 
-#admin-panel{display:none;position:fixed;inset:0;z-index:150;background:var(--bg);overflow-y:auto;}
-#admin-panel.active{display:block;}
-.ah{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;}
-.al{font-family:'Syne',sans-serif;font-weight:700;color:var(--accent);font-size:0.95rem;}
-.ac{max-width:900px;margin:0 auto;padding:2.5rem 2rem;}
-.at{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:2.5rem;flex-wrap:wrap;}
-.atb{padding:0.7rem 1.2rem;background:none;border:none;color:var(--text3);font-family:'DM Mono',monospace;font-size:0.67rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;}
-.atb.active{color:var(--accent);border-bottom-color:var(--accent);}
-.as{display:none;}.as.active{display:block;}
-.as h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:600;color:var(--white);margin-bottom:1.4rem;}
-.acard{background:var(--surface);border:1px solid var(--border);padding:1.8rem;margin-bottom:1.2rem;}
-.btn-d{background:transparent;border:1px solid var(--red);color:var(--red);padding:0.32rem 0.65rem;font-family:'DM Mono',monospace;font-size:0.63rem;cursor:pointer;transition:all 0.2s;}
-.btn-d:hover{background:var(--red);color:var(--bg);}
-.btn-s{background:var(--accent);border:1px solid var(--accent);color:var(--bg);padding:0.6rem 1.4rem;font-family:'DM Mono',monospace;font-size:0.7rem;cursor:pointer;text-transform:uppercase;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.4rem;}
-.btn-s:hover{background:var(--accent2);}
-.uz{border:2px dashed var(--border);padding:2.5rem;text-align:center;cursor:pointer;transition:all 0.2s;}
-.uz:hover{border-color:var(--accent);}
-.uz i{font-size:1.8rem;color:var(--text3);display:block;margin-bottom:0.8rem;}
-.uz p{color:var(--text3);font-size:0.74rem;}
-.ale{padding:0.7rem 1rem;margin-bottom:0.8rem;font-size:0.74rem;}
-.ale.err{background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.3);color:var(--red);}
-
-.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.96);z-index:400;align-items:center;justify-content:center;}
-.lb.active{display:flex;}
-.lb img,.lb video{max-width:90vw;max-height:88vh;object-fit:contain;}
-.lbc{position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--white);font-size:1.4rem;cursor:pointer;opacity:0.7;}
-.lbc:hover{opacity:1;}
-
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--surface);border:1px solid var(--accent);color:var(--text);padding:0.9rem 1.4rem;font-size:0.78rem;z-index:600;transform:translateY(100px);opacity:0;transition:all 0.3s;}
-.toast.show{transform:translateY(0);opacity:1;}
-
-.fi2{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.fi2.visible{opacity:1;transform:translateY(0);}
-
-.cur2{display:inline-block;width:2px;height:0.85em;background:var(--accent);margin-left:2px;animation:blink 0.9s infinite;vertical-align:middle;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:999;background:var(--primary);color:#fff;padding:13px 22px;border-radius:12px;font-size:.89rem;font-weight:500;box-shadow:var(--sh2);transform:translateY(80px);opacity:0;transition:all .4s;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.ok{background:#1a5c3a}
+.toast.err{background:#8b1a1a}
 
 @media(max-width:900px){
-nav{padding:1rem 1.5rem;}nav.scrolled{padding:0.8rem 1.5rem;}
-.nav-links,.nav-cta{display:none;}.nav-hamburger{display:block;}
-#hero{padding:6rem 1.5rem 4rem;}
-.hero-stats{gap:1.5rem;}
-.sw{padding:4rem 1.5rem;}
-.sd{padding:4rem 1.5rem;}
-.about-grid,.skills-grid,.cv-ui,.contact-grid{grid-template-columns:1fr;}
-.gallery-grid{grid-template-columns:1fr 1fr;}.gi.wide{grid-column:span 1;}
-.certs-grid,.projects-grid{grid-template-columns:1fr 1fr;}
-footer{flex-direction:column;gap:0.8rem;text-align:center;}
+  .hero{flex-direction:column;text-align:center;gap:3rem}
+  .hero-acts{justify-content:center}
+  .stats{justify-content:center}
+  .about-g{grid-template-columns:1fr}
+  .ct-g{grid-template-columns:1fr}
+  .nav-links{display:none}
 }
-@media(max-width:500px){.certs-grid{grid-template-columns:1fr;}.hero-stats{flex-wrap:wrap;gap:1.2rem;}}
+@media(max-width:600px){section{padding:4rem 5%}nav{padding:0 4%}}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <div class="nav-logo" onclick="scrollToTop()">MRS<span>.</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">Sobre</a></li>
-    <li><a href="#skills">Competências</a></li>
-    <li><a href="#experience">Percurso</a></li>
-    <li><a href="#gallery">Galeria</a></li>
-    <li><a href="#projects">Projectos</a></li>
-    <li><a href="#cv-gen">CV & Carta</a></li>
-    <li><a href="#contact">Contacto</a></li>
-  </ul>
-  <div class="nav-cta">
-    <button class="btn-outline" onclick="openLogin()"><i class="fas fa-lock"></i> Admin</button>
-    <button class="btn-primary" onclick="scrollTo('cv-gen')"><i class="fas fa-file-pdf"></i> Download CV</button>
+<div class="toast" id="toast"></div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb"><button class="lb-x" onclick="closeLB()">✕</button><div id="lb-c"></div></div>
+
+<!-- LOGIN MODAL -->
+<div class="overlay" id="loginModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeLogin()">✕</button>
+    <h2 id="lm-title">Acesso Administrativo</h2>
+    <div class="f-g2">
+      <label class="fl2">Email</label>
+      <input class="fi2" type="email" id="le" placeholder="admin@mauro.pt">
+    </div>
+    <div class="f-g2">
+      <label class="fl2" id="lm-pass">Palavra-passe</label>
+      <input class="fi2" type="password" id="lp" placeholder="••••••••">
+    </div>
+    <button class="btn-p" onclick="doLogin()" style="width:100%;margin-top:.5rem" id="lm-btn">Entrar</button>
+    <p style="font-size:.76rem;color:var(--muted);margin-top:1rem;text-align:center">Default: admin@mauro.pt / mauro2024</p>
   </div>
-  <button class="nav-hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="adm-overlay" id="adminPanel">
+ <div class="adm-box">
+  <h2>⚙️ Painel de Administração</h2>
+  <p class="adm-sub">Gerencie todo o conteúdo do seu portfólio</p>
+  <div class="adm-tabs">
+    <button class="atab active" onclick="switchTab('profile',this)">👤 Perfil</button>
+    <button class="atab" onclick="switchTab('photo',this)">📷 Foto</button>
+    <button class="atab" onclick="switchTab('skills',this)">🛠 Skills</button>
+    <button class="atab" onclick="switchTab('exp',this)">💼 Experiência</button>
+    <button class="atab" onclick="switchTab('gal',this)">🖼 Galeria</button>
+    <button class="atab" onclick="switchTab('colors',this)">🎨 Cores</button>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="atab-c active" id="tab-profile">
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem">
+    <div class="f-g2"><label class="fl2">Nome Completo</label><input class="fi2" id="a_name" value="Mauro Roberto F. Sebastião"></div>
+    <div class="f-g2"><label class="fl2">Título</label><input class="fi2" id="a_title" value="Administrador de Sistemas de TI"></div>
+    <div class="f-g2"><label class="fl2">Email</label><input class="fi2" id="a_email" value="m.r.f.sebastiao@gmail.com"></div>
+    <div class="f-g2"><label class="fl2">Telefone</label><input class="fi2" id="a_phone" value="+351 910 125 094"></div>
+    <div class="f-g2"><label class="fl2">Localização</label><input class="fi2" id="a_location" value="Lisboa, Portugal"></div>
+    <div class="f-g2"><label class="fl2">LinkedIn</label><input class="fi2" id="a_linkedin" value="https://www.linkedin.com/in/mauro-sebastiao-74a62b1a/"></div>
+    <div class="f-g2"><label class="fl2">Anos Experiência</label><input class="fi2" id="a_years" value="15+"></div>
+    <div class="f-g2"><label class="fl2">Nº Projetos</label><input class="fi2" id="a_projects" value="15+"></div>
+   </div>
+   <div class="f-g2" style="margin-top:.5rem"><label class="fl2">Resumo Profissional</label>
+    <textarea class="ft2" id="a_summary" style="min-height:110px">Administrador de Sistemas de TI com 15+ anos de experiência em infraestrutura crítica, gestão de projetos e virtualização (VMware/Hyper-V), Microsoft 365/Azure e implementação de políticas de segurança (CCTV, Biometria, Kaspersky). Certificado em CCNA, CompTIA A+ e Microsoft 365 Administrator.</textarea>
+   </div>
+  </div>
+
+  <!-- PHOTO -->
+  <div class="atab-c" id="tab-photo">
+   <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.2rem">Upload da sua foto de perfil (JPG/PNG, máx 5MB)</p>
+   <div class="up-area" onclick="document.getElementById('ppInput').click()">
+    <div style="font-size:2.5rem">📸</div>
+    <p>Clique para escolher foto de perfil</p>
+    <p style="font-size:.76rem;margin-top:.2rem">JPG, PNG — máx 5MB</p>
+   </div>
+   <input type="file" id="ppInput" accept="image/*" style="display:none" onchange="handleProfilePhoto(this)">
+   <div id="pp-preview" style="margin-top:1rem;text-align:center"></div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="atab-c" id="tab-skills">
+   <p style="font-size:.87rem;color:var(--muted);margin-bottom:.8rem">Edite nome e nível (0-100) de cada competência</p>
+   <div id="sk-admin"></div>
+   <button onclick="addSkill()" style="background:var(--accent3);color:var(--accent);border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.83rem;margin-top:.3rem">+ Adicionar</button>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="atab-c" id="tab-exp">
+   <p style="font-size:.87rem;color:var(--muted);margin-bottom:.8rem">Edite o percurso profissional</p>
+   <div id="exp-admin"></div>
+   <button onclick="addExp()" style="background:var(--accent3);color:var(--accent);border:none;padding:9px 18px;border-radius:8px;cursor:pointer;font-weight:600;font-size:.83rem;margin-top:.3rem">+ Adicionar Experiência</button>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="atab-c" id="tab-gal">
+   <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.2rem">Adicione fotos e vídeos dos seus projetos</p>
+   <div class="up-area" onclick="document.getElementById('galInput').click()">
+    <div style="font-size:2.5rem">🖼️</div>
+    <p>Clique para adicionar fotos / vídeos</p>
+    <p style="font-size:.76rem;margin-top:.2rem">JPG, PNG, MP4 • Múltiplos ficheiros</p>
+   </div>
+   <input type="file" id="galInput" accept="image/*,video/*" multiple style="display:none" onchange="handleGallery(this)">
+   <div id="gal-adm-prev" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:.6rem;margin-top:.8rem"></div>
+  </div>
+
+  <!-- COLORS -->
+  <div class="atab-c" id="tab-colors">
+   <p style="font-size:.9rem;color:var(--muted);margin-bottom:1.2rem">Escolha o esquema de cores</p>
+   <label class="fl2">Temas Predefinidos</label>
+   <div class="color-row">
+    <div class="sw sel" style="background:#2d7dd2" data-p="#1a3a5c" data-a="#2d7dd2" data-a2="#5ba4f5" data-a3="#e8f2ff" onclick="applyTheme(this)" title="Azul"></div>
+    <div class="sw" style="background:#0f766e" data-p="#0d3d38" data-a="#0f766e" data-a2="#14b8a6" data-a3="#e6f7f5" onclick="applyTheme(this)" title="Verde"></div>
+    <div class="sw" style="background:#7c3aed" data-p="#2e1065" data-a="#7c3aed" data-a2="#a78bfa" data-a3="#f0ebff" onclick="applyTheme(this)" title="Púrpura"></div>
+    <div class="sw" style="background:#b45309" data-p="#451a03" data-a="#b45309" data-a2="#f59e0b" data-a3="#fff7e6" onclick="applyTheme(this)" title="Âmbar"></div>
+    <div class="sw" style="background:#0e7490" data-p="#083344" data-a="#0e7490" data-a2="#22d3ee" data-a3="#e0f7fb" onclick="applyTheme(this)" title="Ciano"></div>
+    <div class="sw" style="background:#be185d" data-p="#500724" data-a="#be185d" data-a2="#f472b6" data-a3="#fde8f2" onclick="applyTheme(this)" title="Rosa"></div>
+    <div class="sw" style="background:#1e293b" data-p="#0f172a" data-a="#334155" data-a2="#64748b" data-a3="#f1f5f9" onclick="applyTheme(this)" title="Slate"></div>
+   </div>
+   <div style="margin-top:1.4rem">
+    <label class="fl2">Cor Personalizada</label>
+    <div style="display:flex;gap:.7rem;align-items:center;margin-top:.4rem">
+     <input type="color" id="cpicker" value="#2d7dd2" style="width:46px;height:46px;border:none;border-radius:8px;cursor:pointer">
+     <input class="fi2" id="chex" placeholder="#2d7dd2" style="width:150px">
+     <button onclick="applyCustomColor()" style="background:var(--accent);color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600">Aplicar</button>
+    </div>
+   </div>
+  </div>
+
+  <div class="adm-btns">
+   <button class="save-btn" onclick="saveAll()">💾 Guardar Alterações</button>
+   <button class="cls-btn" onclick="closeAdmin()">Fechar</button>
+  </div>
+ </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#home">MS</a>
+  <ul class="nav-links">
+    <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="#skills" data-pt="Competências" data-en="Skills">Competências</a></li>
+    <li><a href="#experience" data-pt="Percurso" data-en="Experience">Percurso</a></li>
+    <li><a href="#gallery" data-pt="Galeria" data-en="Gallery">Galeria</a></li>
+    <li><a href="#cv-gen" data-pt="CV / Carta" data-en="CV / Letter">CV / Carta</a></li>
+    <li><a href="#contact" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="btn-adm" onclick="openLogin()" id="admBtn">🔐 Admin</button>
+  </div>
 </nav>
 
-<section id="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <div class="hero-label"><span class="pulse"></span>Disponível para novas oportunidades em Lisboa</div>
-    <h1 class="hero-name">Mauro Roberto F.<strong>Sebastião<span class="cur2"></span></strong><em>IT Systems Administrator &amp; Security Technician</em></h1>
-    <div class="hero-sub"><hr>Infrastructure · Cloud · CCTV &amp; Security · Microsoft 365</div>
-    <div class="hero-badges">
-      <span class="badge hi">CompTIA A+</span>
-      <span class="badge hi">Cisco CCNA</span>
-      <span class="badge hi">Microsoft 365 Admin</span>
-      <span class="badge hi">VMware ESXi</span>
-      <span class="badge hi">Kaspersky Admin</span>
-      <span class="badge hi">CCTV &amp; Security</span>
-      <span class="badge">Azure</span><span class="badge">PowerShell</span>
-      <span class="badge">Veeam</span><span class="badge">Zabbix</span>
-      <span class="badge">SharePoint</span><span class="badge">Hyper-V</span>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="blob1"></div><div class="blob2"></div>
+  <div class="hero-c">
+    <div class="badge" data-pt="Disponível para novas oportunidades" data-en="Available for new opportunities">Disponível para novas oportunidades</div>
+    <h1 id="hn">Mauro<br><span>Sebastião</span></h1>
+    <p class="hero-sub" id="hs">Administrador de Sistemas de TI · Cyber Security · CCTV · Microsoft 365</p>
+    <div class="hero-acts">
+      <a href="#contact" class="btn-p" data-pt="Entrar em Contacto" data-en="Get in Touch">Entrar em Contacto</a>
+      <a href="#cv-gen" class="btn-o" data-pt="Gerar CV" data-en="Generate CV">Gerar CV</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Anos Exp.</div></div>
-      <div class="stat-item"><div class="stat-num">15<span>+</span></div><div class="stat-label">Proj. CCTV</div></div>
-      <div class="stat-item"><div class="stat-num">500<span>+</span></div><div class="stat-label">Utilizadores</div></div>
-      <div class="stat-item"><div class="stat-num">99<span>%</span></div><div class="stat-label">Uptime</div></div>
-    </div>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Contactar</a>
-      <a href="#experience" class="btn-outline"><i class="fas fa-briefcase"></i> Ver Percurso</a>
+    <div class="stats">
+      <div><div class="stat-n" id="sy">15+</div><div class="stat-l" data-pt="Anos Exp." data-en="Years Exp.">Anos Exp.</div></div>
+      <div><div class="stat-n" id="sp">15+</div><div class="stat-l" data-pt="Projetos" data-en="Projects">Projetos</div></div>
+      <div><div class="stat-n">2</div><div class="stat-l" data-pt="Idiomas" data-en="Languages">Idiomas</div></div>
     </div>
   </div>
-  <div class="hero-scroll">Scroll</div>
+  <div class="photo-wrap">
+    <div class="photo-ring">
+      <div class="photo-inner" id="photo-inner">
+        <span id="photo-initials">MS</span>
+        <img id="photo-img" src="" alt="Mauro Sebastião">
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
-<div class="sw fi2" id="about">
-  <div class="sh"><div class="sn">01</div><h2 class="st">Sobre <span>Mim</span></h2></div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p id="ap1">Sou Mauro Roberto F. Sebastião, Administrador de Sistemas de TI com mais de 15 anos de experiência em infraestrutura crítica, gestão de projectos e virtualização (VMware/Hyper-V), Microsoft 365/Azure e implementação de políticas de segurança incluindo CCTV, Biometria e Kaspersky. Certificado em CCNA, CompTIA A+ e Microsoft 365 Administrator.</p>
-      <p id="ap2">Ao longo da minha carreira, projectei e construí Mini-Data Centers, administrei ambientes Windows Server (AD, DNS, GPO), implementei soluções de backup e disaster recovery com RTO inferior a 2 horas, e desenvolvi scripts de automação em PowerShell e Python que reduziram tarefas manuais em 70%.</p>
-      <p id="ap3">Sou também Técnico de Segurança Eletrónica experiente em instalar, configurar e manter sistemas de CCTV (analógico, IP e híbrido), controlo de acesso biométrico, cercas eléctricas, interfonia e automação residencial/empresarial. Actualmente a residir em Lisboa, Portugal, onde procuro novos desafios profissionais.</p>
-      <div class="about-details">
-        <div class="di"><div class="dl">Localização</div><div class="dv" id="loc-v">Lisboa, Massama — Portugal</div></div>
-        <div class="di"><div class="dl">Disponibilidade</div><div class="dv" style="color:var(--green);">✓ Disponível</div></div>
-        <div class="di"><div class="dl">Email</div><div class="dv"><a href="mailto:m.r.f.sebastiao@gmail.com" id="em-v">m.r.f.sebastiao@gmail.com</a></div></div>
-        <div class="di"><div class="dl">Telefone</div><div class="dv" id="ph-v">+351 910 125 094</div></div>
-        <div class="di"><div class="dl">Nascimento</div><div class="dv">26 Setembro 1990</div></div>
-        <div class="di"><div class="dl">Nacionalidade</div><div class="dv">Angolana</div></div>
-        <div class="di" style="grid-column:span 2;"><div class="dl">LinkedIn</div><div class="dv"><a href="https://www.linkedin.com/in/mauro-sebastiao-74a62b1a/" target="_blank">linkedin.com/in/mauro-sebastiao-74a62b1a</a></div></div>
+<section id="about">
+  <div class="sec-hdr">
+    <div class="sec-tag" data-pt="Quem Sou" data-en="Who I Am">Quem Sou</div>
+    <h2 class="sec-title" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</h2>
+  </div>
+  <div class="about-g">
+    <div>
+      <p class="about-p" id="ab-sum">Administrador de Sistemas de TI com 15+ anos de experiência em infraestrutura crítica, gestão de projetos e virtualização (VMware/Hyper-V), Microsoft 365/Azure e implementação de políticas de segurança (CCTV, Biometria, Kaspersky). Certificado em CCNA, CompTIA A+ e Microsoft 365 Administrator.</p>
+      <p class="about-p" data-pt="Especialista em projetar soluções integradas de segurança eletrónica e TI. Perfil proativo, confiável e orientado à excelência operacional, com forte capacidade de gestão de projetos e formação de equipas." data-en="Specialist in designing integrated electronic security and IT solutions. Proactive, reliable profile oriented toward operational excellence, with strong project management and team training capabilities.">Especialista em projetar soluções integradas de segurança eletrónica e TI. Perfil proativo, confiável e orientado à excelência operacional, com forte capacidade de gestão de projetos e formação de equipas.</p>
+      <div class="info-g">
+        <div class="info-it"><div class="info-l" data-pt="Localização" data-en="Location">Localização</div><div class="info-v" id="ab-loc">Lisboa, Portugal</div></div>
+        <div class="info-it"><div class="info-l">Email</div><div class="info-v" id="ab-email">m.r.f.sebastiao@gmail.com</div></div>
+        <div class="info-it"><div class="info-l" data-pt="Telefone" data-en="Phone">Telefone</div><div class="info-v" id="ab-phone">+351 910 125 094</div></div>
+        <div class="info-it"><div class="info-l" data-pt="Idiomas" data-en="Languages">Idiomas</div><div class="info-v" data-pt="Português (Nativo) · Inglês (B2)" data-en="Portuguese (Native) · English (B2)">Português (Nativo) · Inglês (B2)</div></div>
       </div>
     </div>
-    <div class="photo-frame" id="prof-photo">
-      <div class="photo-ph"><i class="fas fa-user-circle"></i><span>Faça login como Admin para adicionar a sua foto de perfil</span></div>
+    <div>
+      <div class="cert-card"><div class="cert-title">🏆 CompTIA A+ Certified</div><div class="cert-sub" data-pt="Hardware & Software Fundamentals" data-en="Hardware & Software Fundamentals">Hardware & Software Fundamentals</div></div>
+      <div class="cert-card"><div class="cert-title">🌐 Cisco CCNA</div><div class="cert-sub" data-pt="Networking & Routing Protocols" data-en="Networking & Routing Protocols">Networking & Routing Protocols</div></div>
+      <div class="cert-card"><div class="cert-title">☁️ Microsoft 365 Administrator</div><div class="cert-sub">Global Admin · Azure AD · SharePoint</div></div>
+      <div class="cert-card"><div class="cert-title">🔒 Kaspersky Security Admin</div><div class="cert-sub" data-pt="Endpoint & Server Security" data-en="Endpoint & Server Security">Endpoint & Server Security</div></div>
+      <div class="cert-card"><div class="cert-title">📹 CCTV & Segurança Eletrónica</div><div class="cert-sub" data-pt="15+ Projetos implementados" data-en="15+ Projects implemented">15+ Projetos implementados</div></div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- SKILLS -->
-<div class="sd fi2" id="skills">
-  <div class="swi"><div class="sh"><div class="sn">02</div><h2 class="st">Competências <span>Técnicas</span></h2></div>
-  <div class="skills-grid" id="skills-grid"></div></div>
-</div>
+<section id="skills">
+  <div class="sec-hdr">
+    <div class="sec-tag" data-pt="O que faço" data-en="What I Do">O que faço</div>
+    <h2 class="sec-title" data-pt="Competências Técnicas" data-en="Technical Skills">Competências Técnicas</h2>
+  </div>
+  <div class="skills-g" id="sk-grid"></div>
+</section>
 
 <!-- EXPERIENCE -->
-<div class="sw fi2" id="experience">
-  <div class="sh"><div class="sn">03</div><h2 class="st">Percurso <span>Profissional</span></h2></div>
-  <div class="timeline" id="timeline"></div>
-</div>
+<section id="experience">
+  <div class="sec-hdr">
+    <div class="sec-tag" data-pt="Percurso" data-en="Career Path">Percurso</div>
+    <h2 class="sec-title" data-pt="Experiência Profissional" data-en="Professional Experience">Experiência Profissional</h2>
+  </div>
+  <div class="tl" id="tl"></div>
+</section>
 
 <!-- GALLERY -->
-<div class="sd fi2" id="gallery">
-  <div class="swi"><div class="sh"><div class="sn">04</div><h2 class="st">Galeria <span>de Trabalhos</span></h2></div>
-  <div class="gallery-grid" id="gal-grid"></div></div>
-</div>
+<section id="gallery">
+  <div class="sec-hdr">
+    <div class="sec-tag" data-pt="Trabalhos" data-en="Projects">Trabalhos</div>
+    <h2 class="sec-title" data-pt="Galeria de Projetos" data-en="Project Gallery">Galeria de Projetos</h2>
+  </div>
+  <div class="gal-g" id="gal"></div>
+</section>
 
-<!-- PROJECTS -->
-<div class="sw fi2" id="projects">
-  <div class="sh"><div class="sn">05</div><h2 class="st">Projectos <span>Destacados</span></h2></div>
-  <div class="projects-grid" id="proj-grid"></div>
-</div>
-
-<!-- CERTS -->
-<div class="sd fi2" id="certifications">
-  <div class="swi"><div class="sh"><div class="sn">06</div><h2 class="st">Certificações &amp; <span>Formação</span></h2></div>
-  <div class="certs-grid" id="certs-grid"></div></div>
-</div>
-
-<!-- CV GENERATOR -->
-<div class="sw fi2" id="cv-gen">
-  <div class="sh"><div class="sn">07</div><h2 class="st">Gerar CV / <span>Carta de Apresentação</span></h2></div>
-  <div class="cv-ui">
-    <div class="gf">
-      <div class="fg"><label class="fl">Tipo de Documento</label>
-        <div class="rg">
-          <label class="rl"><input type="radio" name="dt" value="cv" checked onchange="updDoc(this)"> CV Europeu</label>
-          <label class="rl"><input type="radio" name="dt" value="cpt" onchange="updDoc(this)"> Carta PT</label>
-          <label class="rl"><input type="radio" name="dt" value="cen" onchange="updDoc(this)"> Cover Letter EN</label>
-        </div>
-      </div>
-      <div class="fg" id="fg-co" style="display:none;"><label class="fl">Nome da Empresa</label><input type="text" class="fi" id="co-name" placeholder="Ex: NOS Comunicações"></div>
-      <div class="fg" id="fg-ref" style="display:none;"><label class="fl">Referência da Vaga</label><input type="text" class="fi" id="co-ref" placeholder="Ex: REF-2025-IT-042"></div>
-      <div class="fg" id="fg-pos" style="display:none;"><label class="fl">Cargo / Posição</label><input type="text" class="fi" id="co-pos" placeholder="Ex: Systems Administrator"></div>
-      <div class="fg" id="fg-cvt"><label class="fl">Perfil do CV</label>
-        <select class="fs" id="cv-profile">
-          <option value="it">Administrador de Sistemas de TI</option>
-          <option value="cctv">Técnico de CCTV &amp; Segurança Eletrónica</option>
-          <option value="full">Perfil Completo</option>
-        </select>
-      </div>
-      <button class="btn-primary" onclick="genDoc()" style="width:100%;padding:0.9rem;justify-content:center;"><i class="fas fa-file-pdf"></i> Gerar &amp; Abrir para PDF</button>
-      <p style="font-size:0.68rem;color:var(--text3);margin-top:0.8rem;text-align:center;">Use Ctrl+P (ou ⌘+P) no documento para guardar como PDF</p>
-    </div>
-    <div class="gp">
-      <div class="pt"><i class="fas fa-eye" style="margin-right:0.4rem;"></i>Pré-visualização</div>
-      <div class="pc2" id="prev-content"><div style="text-align:center;padding:2rem;color:#aaa;font-family:sans-serif;">Seleccione tipo e clique em Pré-visualizar</div></div>
-      <button class="btn-outline" onclick="prevDoc()" style="margin-top:1rem;width:100%;padding:0.7rem;justify-content:center;"><i class="fas fa-eye"></i> Pré-visualizar</button>
+<!-- CV GEN -->
+<section id="cv-gen">
+  <div class="sec-hdr">
+    <div class="sec-tag" data-pt="Documentos" data-en="Documents">Documentos</div>
+    <h2 class="sec-title" data-pt="Gerar CV & Carta de Apresentação" data-en="Generate CV & Cover Letter">Gerar CV & Carta de Apresentação</h2>
+  </div>
+  <div class="cv-form">
+    <div class="f-g"><label class="f-l" data-pt="Nome da Empresa" data-en="Company Name">Nome da Empresa</label><input class="f-i" id="cv-co" placeholder="Ex: Microsoft Portugal" data-placeholder-pt="Ex: Microsoft Portugal" data-placeholder-en="e.g. Microsoft Portugal"></div>
+    <div class="f-g"><label class="f-l" data-pt="Referência da Vaga" data-en="Job Reference">Referência da Vaga</label><input class="f-i" id="cv-ref" placeholder="Ex: IT-SYS-2024-001" data-placeholder-pt="Ex: IT-SYS-2024-001" data-placeholder-en="e.g. IT-SYS-2024-001"></div>
+    <div class="f-g"><label class="f-l" data-pt="Idioma" data-en="Language">Idioma</label><select class="f-i" id="cv-lang"><option value="pt">Português</option><option value="en">English</option></select></div>
+    <div class="cv-btns">
+      <button class="btn-p" onclick="genCV()">📄 <span data-pt="Gerar CV Europeu" data-en="Generate European CV">Gerar CV Europeu</span></button>
+      <button class="btn-o" onclick="genCover()">✉️ <span data-pt="Gerar Carta" data-en="Cover Letter">Gerar Carta</span></button>
     </div>
   </div>
-</div>
+</section>
 
 <!-- CONTACT -->
-<div class="sd fi2" id="contact">
-  <div class="swi">
-    <div class="sh"><div class="sn">08</div><h2 class="st">Vamos <span>Conversar</span></h2></div>
-    <div class="contact-grid">
-      <div>
-        <p style="color:var(--text2);font-size:0.83rem;line-height:1.95;">Estou disponível para novas oportunidades em Lisboa e arredores. Seja para infraestrutura, CCTV, administração de sistemas ou qualquer desafio tecnológico — entre em contacto.</p>
-        <div class="cl">
-          <a href="mailto:m.r.f.sebastiao@gmail.com" class="clink"><i class="fas fa-envelope"></i><span>m.r.f.sebastiao@gmail.com</span></a>
-          <a href="tel:+351910125094" class="clink"><i class="fas fa-phone"></i><span>+351 910 125 094</span></a>
-          <a href="https://www.linkedin.com/in/mauro-sebastiao-74a62b1a/" target="_blank" class="clink"><i class="fab fa-linkedin"></i><span>linkedin.com/in/mauro-sebastiao-74a62b1a</span></a>
-          <div class="clink" style="cursor:default;"><i class="fas fa-map-marker-alt"></i><span>Lisboa, Massama, Portugal</span></div>
-        </div>
-      </div>
-      <div class="cf">
-        <div class="fg"><label class="fl">Nome</label><input type="text" class="fi" id="mn"></div>
-        <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="me"></div>
-        <div class="fg"><label class="fl">Assunto</label><input type="text" class="fi" id="ms" placeholder="Proposta de trabalho..."></div>
-        <div class="fg"><label class="fl">Mensagem</label><textarea class="fta" id="mb"></textarea></div>
-        <button class="btn-primary" onclick="sendMsg()" style="padding:0.9rem 2rem;"><i class="fas fa-paper-plane"></i> Enviar via Email</button>
-      </div>
+<section id="contact">
+  <div class="sec-hdr">
+    <div class="sec-tag" data-pt="Contacto" data-en="Contact">Contacto</div>
+    <h2 class="sec-title" data-pt="Entre em Contacto" data-en="Get in Touch">Entre em Contacto</h2>
+  </div>
+  <div class="ct-g">
+    <div class="ct-info">
+      <div class="ct-it"><div class="ct-ico">📧</div><div><div class="ct-dl">Email</div><div class="ct-dv" id="c-email">m.r.f.sebastiao@gmail.com</div></div></div>
+      <div class="ct-it"><div class="ct-ico">📱</div><div><div class="ct-dl" data-pt="Telefone" data-en="Phone">Telefone</div><div class="ct-dv" id="c-phone">+351 910 125 094</div></div></div>
+      <div class="ct-it"><div class="ct-ico">📍</div><div><div class="ct-dl" data-pt="Localização" data-en="Location">Localização</div><div class="ct-dv" id="c-loc">Lisboa, Portugal</div></div></div>
+      <div class="ct-it"><div class="ct-ico">💼</div><div><div class="ct-dl">LinkedIn</div><div class="ct-dv"><a href="https://www.linkedin.com/in/mauro-sebastiao-74a62b1a/" target="_blank" id="c-li" style="color:var(--accent)">linkedin.com/in/mauro-sebastiao</a></div></div></div>
+    </div>
+    <div class="ct-form">
+      <input class="f-i" id="mn" placeholder="O seu nome" data-placeholder-pt="O seu nome" data-placeholder-en="Your name">
+      <input class="f-i" id="me" type="email" placeholder="O seu email" data-placeholder-pt="O seu email" data-placeholder-en="Your email">
+      <textarea class="f-i" id="mm" style="min-height:120px;resize:vertical" placeholder="A sua mensagem..." data-placeholder-pt="A sua mensagem..." data-placeholder-en="Your message..."></textarea>
+      <button class="submit-btn" onclick="sendMsg()" data-pt="Enviar Mensagem" data-en="Send Message">Enviar Mensagem</button>
     </div>
   </div>
-</div>
+</section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="ft">© 2025 <span>Mauro Roberto F. Sebastião</span></div>
-  <div class="ft">Lisboa, Portugal · <span>IT Systems Administrator</span></div>
+  <p>© 2024 <strong id="fn">Mauro Roberto F. Sebastião</strong> · <span data-pt="Todos os direitos reservados" data-en="All rights reserved">Todos os direitos reservados</span></p>
+  <p style="margin-top:.4rem"><a href="mailto:m.r.f.sebastiao@gmail.com" id="fe">m.r.f.sebastiao@gmail.com</a></p>
 </footer>
 
-<!-- LOGIN MODAL -->
-<div class="mo" id="login-mo">
-  <div class="modal">
-    <button class="mc" onclick="closeMo('login-mo')"><i class="fas fa-times"></i></button>
-    <div class="mt">Área Administrativa</div>
-    <div class="ms">Password para gerir o portfólio</div>
-    <div id="login-err" style="display:none;" class="ale err"></div>
-    <div class="fg"><label class="fl">Password</label><input type="password" class="fi" id="apwd" placeholder="••••••••" onkeyup="if(event.key==='Enter')tryLogin()"></div>
-    <button class="btn-primary" onclick="tryLogin()" style="width:100%;padding:0.9rem;justify-content:center;margin-top:0.5rem;">Entrar <i class="fas fa-arrow-right"></i></button>
-    <p style="font-size:0.68rem;color:var(--text3);margin-top:1.2rem;text-align:center;">Password padrão: <strong style="color:var(--accent)">mauro2024</strong></p>
-  </div>
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lb" id="lb" onclick="closeLb()">
-  <button class="lbc" onclick="closeLb()"><i class="fas fa-times"></i></button>
-  <img id="lb-img" src="" alt="" style="display:none;">
-  <video id="lb-vid" controls style="display:none;" onclick="event.stopPropagation()"></video>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<!-- ADMIN PANEL -->
-<div id="admin-panel">
-  <div class="ah">
-    <div class="al">⚡ Admin — Mauro Roberto F. Sebastião</div>
-    <div style="display:flex;gap:1rem;align-items:center;">
-      <span style="font-size:0.68rem;color:var(--green);">● Sessão activa</span>
-      <button class="btn-outline" onclick="closeAdmin()"><i class="fas fa-times"></i> Fechar</button>
-    </div>
-  </div>
-  <div class="ac">
-    <div class="at">
-      <button class="atb active" onclick="swTab('profile',this)">Perfil</button>
-      <button class="atb" onclick="swTab('exp',this)">Experiência</button>
-      <button class="atb" onclick="swTab('skills',this)">Competências</button>
-      <button class="atb" onclick="swTab('gal',this)">Galeria</button>
-      <button class="atb" onclick="swTab('certs',this)">Certificações</button>
-      <button class="atb" onclick="swTab('projs',this)">Projectos</button>
-      <button class="atb" onclick="swTab('set',this)">Definições</button>
-    </div>
-
-    <div class="as active" id="tab-profile">
-      <h3>Informações de Perfil</h3>
-      <div class="acard">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div class="fg"><label class="fl">Nome</label><input type="text" class="fi" id="an"></div>
-          <div class="fg"><label class="fl">Título</label><input type="text" class="fi" id="ati"></div>
-          <div class="fg"><label class="fl">Subtítulo</label><input type="text" class="fi" id="asu"></div>
-          <div class="fg"><label class="fl">Email</label><input type="email" class="fi" id="aem"></div>
-          <div class="fg"><label class="fl">Telefone</label><input type="text" class="fi" id="aph"></div>
-          <div class="fg"><label class="fl">Localização</label><input type="text" class="fi" id="alo"></div>
-          <div class="fg"><label class="fl">Anos Experiência</label><input type="number" class="fi" id="ayr"></div>
-          <div class="fg"><label class="fl">Projectos CCTV</label><input type="number" class="fi" id="apr"></div>
-        </div>
-        <div class="fg"><label class="fl">Sobre — Parágrafo 1</label><textarea class="fta" id="ab1"></textarea></div>
-        <div class="fg"><label class="fl">Sobre — Parágrafo 2</label><textarea class="fta" id="ab2"></textarea></div>
-        <div class="fg"><label class="fl">Sobre — Parágrafo 3</label><textarea class="fta" id="ab3"></textarea></div>
-        <div class="fg"><label class="fl">Foto de Perfil</label><input type="file" class="fi" id="aph2" accept="image/*" onchange="handlePhoto(this)"></div>
-        <button class="btn-s" onclick="savePro()"><i class="fas fa-save"></i> Guardar</button>
-      </div>
-    </div>
-
-    <div class="as" id="tab-exp">
-      <h3>Experiência Profissional</h3>
-      <div class="acard">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div class="fg"><label class="fl">Cargo</label><input type="text" class="fi" id="er"></div>
-          <div class="fg"><label class="fl">Empresa</label><input type="text" class="fi" id="ec"></div>
-          <div class="fg"><label class="fl">Localização</label><input type="text" class="fi" id="el" placeholder="Lisboa, Portugal"></div>
-          <div class="fg"><label class="fl">Período</label><input type="text" class="fi" id="ed" placeholder="Jan 2020 — Presente"></div>
-        </div>
-        <div class="fg"><label class="fl">Responsabilidades (uma por linha)</label><textarea class="fta" id="edes" style="min-height:120px;"></textarea></div>
-        <div class="fg"><label class="fl">Tags (vírgula)</label><input type="text" class="fi" id="etg"></div>
-        <div class="fg"><label class="rl"><input type="checkbox" id="ecur" style="accent-color:var(--accent);"> Emprego actual</label></div>
-        <button class="btn-s" onclick="addExp()"><i class="fas fa-plus"></i> Adicionar</button>
-      </div>
-      <div id="exp-list"></div>
-    </div>
-
-    <div class="as" id="tab-skills">
-      <h3>Competências Técnicas</h3>
-      <div class="acard">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div class="fg"><label class="fl">Nome</label><input type="text" class="fi" id="sn2"></div>
-          <div class="fg"><label class="fl">Ícone FA</label><input type="text" class="fi" id="si" placeholder="fas fa-server"></div>
-          <div class="fg"><label class="fl">Proficiência %</label><input type="number" class="fi" id="sl" min="0" max="100"></div>
-          <div class="fg"><label class="fl">Tags (vírgula)</label><input type="text" class="fi" id="st2"></div>
-        </div>
-        <button class="btn-s" onclick="addSkill()"><i class="fas fa-plus"></i> Adicionar</button>
-      </div>
-      <div id="sk-list"></div>
-    </div>
-
-    <div class="as" id="tab-gal">
-      <h3>Galeria de Media</h3>
-      <div class="acard">
-        <div class="uz" onclick="document.getElementById('gup').click()">
-          <i class="fas fa-cloud-upload-alt"></i>
-          <p>Clique para fazer upload de fotos/vídeos dos seus trabalhos</p>
-          <p style="font-size:0.65rem;margin-top:0.3rem;color:var(--text3);">JPG, PNG, MP4, WebM</p>
-        </div>
-        <input type="file" id="gup" style="display:none;" multiple accept="image/*,video/*" onchange="handleGal(this)">
-      </div>
-      <div id="gal-list" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem;"></div>
-    </div>
-
-    <div class="as" id="tab-certs">
-      <h3>Certificações &amp; Formação</h3>
-      <div class="acard">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-          <div class="fg" style="grid-column:span 2;"><label class="fl">Nome</label><input type="text" class="fi" id="cn2"></div>
-          <div class="fg"><label class="fl">Entidade</label><input type="text" class="fi" id="ciss"></div>
-          <div class="fg"><label class="fl">Ano</label><input type="text" class="fi" id="cyr2"></div>
-          <div class="fg" style="grid-column:span 2;"><label class="fl">Ícone FA</label><input type="text" class="fi" id="cion" placeholder="fab fa-microsoft"></div>
-        </div>
-        <button class="btn-s" onclick="addCert()"><i class="fas fa-plus"></i> Adicionar</button>
-      </div>
-      <div id="cert-list"></div>
-    </div>
-
-    <div class="as" id="tab-projs">
-      <h3>Projectos</h3>
-      <div class="acard">
-        <div class="fg"><label class="fl">Título</label><input type="text" class="fi" id="pt2"></div>
-        <div class="fg"><label class="fl">Descrição</label><textarea class="fta" id="pd2"></textarea></div>
-        <div class="fg"><label class="fl">Tags (vírgula)</label><input type="text" class="fi" id="ptg2"></div>
-        <button class="btn-s" onclick="addProj()"><i class="fas fa-plus"></i> Adicionar</button>
-      </div>
-      <div id="proj-list"></div>
-    </div>
-
-    <div class="as" id="tab-set">
-      <h3>Definições</h3>
-      <div class="acard">
-        <h4 style="color:var(--text2);font-size:0.85rem;margin-bottom:1.2rem;">Alterar Password</h4>
-        <div class="fg"><label class="fl">Password Actual</label><input type="password" class="fi" id="pc3"></div>
-        <div class="fg"><label class="fl">Nova Password</label><input type="password" class="fi" id="pn"></div>
-        <div class="fg"><label class="fl">Confirmar</label><input type="password" class="fi" id="pcf"></div>
-        <button class="btn-s" onclick="chgPwd()"><i class="fas fa-key"></i> Alterar</button>
-      </div>
-      <div class="acard" style="margin-top:1.2rem;">
-        <h4 style="color:var(--text2);font-size:0.85rem;margin-bottom:1rem;">Backup</h4>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <button class="btn-outline" onclick="expData()"><i class="fas fa-download"></i> Exportar JSON</button>
-          <button class="btn-outline" onclick="document.getElementById('imp-f').click()"><i class="fas fa-upload"></i> Importar</button>
-          <input type="file" id="imp-f" style="display:none;" accept=".json" onchange="impData(this)">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
-const SK='mrs_pf_v3';
-function getD(){try{const d=localStorage.getItem(SK);if(d)return JSON.parse(d);}catch(e){}return def();}
-function sv(d){localStorage.setItem(SK,JSON.stringify(d));}
+// ── DATA ──────────────────────────────────────────────────────
+const DEF = {
+  name:'Mauro Roberto F. Sebastião',
+  title:'Administrador de Sistemas de TI',
+  email:'m.r.f.sebastiao@gmail.com',
+  phone:'+351 910 125 094',
+  location:'Lisboa, Portugal',
+  linkedin:'https://www.linkedin.com/in/mauro-sebastiao-74a62b1a/',
+  years:'15+', projects:'15+',
+  summary:'Administrador de Sistemas de TI com 15+ anos de experiência em infraestrutura crítica, gestão de projetos e virtualização (VMware/Hyper-V), Microsoft 365/Azure e implementação de políticas de segurança (CCTV, Biometria, Kaspersky). Certificado em CCNA, CompTIA A+ e Microsoft 365 Administrator.',
+  photo:null,
+  theme:{p:'#1a3a5c',a:'#2d7dd2',a2:'#5ba4f5',a3:'#e8f2ff'},
+  skills:[
+    {n:'Windows Server / AD / DNS / GPO',v:95},
+    {n:'VMware ESXi / Hyper-V',v:90},
+    {n:'Microsoft 365 / Azure AD',v:92},
+    {n:'Cisco CCNA / Redes',v:88},
+    {n:'CCTV / Segurança Eletrónica',v:95},
+    {n:'Kaspersky Admin Center',v:90},
+    {n:'PowerShell / Python',v:80},
+    {n:'Backup & DR (Veeam)',v:88},
+    {n:'Controlo Acesso / Biometria',v:90},
+    {n:'SharePoint / WSUS',v:82},
+    {n:'Cyber Security',v:78},
+    {n:'Zabbix / Monitorização',v:85},
+  ],
+  experience:[
+    {date:'Fev 2022 – Atualmente',title:'Administrador de Sistemas de TI',co:'Academia BAI — Morro Bento, Luanda, Angola',desc:'Gestão de infraestrutura Windows Server (AD, DNS, GPO) e virtualização VMware/Hyper-V com 99.9% de disponibilidade. Implementação de políticas de cibersegurança (firewall, Kaspersky, CFTV) reduzindo incidentes em 40%. Automação com PowerShell/Python poupando 70% de tarefas manuais. Backup Veeam com RTO < 2h. Administrador Global Microsoft 365. Monitorização Zabbix e procurement otimizando custos em 30%.',tags:['Windows Server','VMware','M365','Kaspersky','PowerShell','Veeam']},
+    {date:'Mar 2020 – Fev 2022',title:'Técnico de TI e Segurança Eletrónica',co:'Vida Digital Lda — Luanda, Angola',desc:'Instalação de sistemas CCTV (analógico, IP e híbrido), controlo de acesso biométrico, passagem de cabos e configuração de DVRs/NVRs. Manutenção de cercas elétricas, portões automáticos e assistência informática geral.',tags:['CCTV','DVR/NVR','Controlo Acesso','Cerca Elétrica','Cablagem']},
+    {date:'Nov 2012 – Mar 2020',title:'Administrador de Sistemas de TI e Segurança Eletrónica',co:'Faculdade de Economia UAN & Pinto Bastos — Luanda, Angola',desc:'Projeção e construção do Mini-Data Center, reduzindo custos operacionais em 30% e suportando 500+ utilizadores. Gestão do orçamento de TI (OGE). Implementação completa de CCTV: câmeras analógicas/IP, DVRs/NVRs, controlo de acesso biométrico e planos de recuperação de desastres (DRP).',tags:['Mini-DataCenter','CCTV','500+ users','DRP','Procurement']},
+    {date:'Mar 2008 – Nov 2012',title:'Técnico de TI / Gerente de Documentação',co:'ZICAI Grupo Infornet & Haut de Gamme — Luanda, Angola',desc:'Instalação e configuração de sistemas de segurança CCTV (analógico, IP e híbrido), controlo de acesso biométrico, DVRs/NVRs e vigilância remota. Padronização de processos técnicos aumentando eficiência operacional em 25%.',tags:['CCTV','Segurança','Controlo Acesso','Documentação']},
+  ],
+  gallery:[],
+  lang:'pt',
+  adminEmail:'admin@mauro.pt',
+  adminPass:'mauro2024'
+};
 
-function def(){return{password:'mauro2024',profile:{name:'Mauro Roberto F. Sebastião',title:'Administrador de Sistemas de TI',subtitle:'Infrastructure · Cloud · CCTV & Security · Microsoft 365',email:'m.r.f.sebastiao@gmail.com',phone:'+351 910 125 094',location:'Lisboa, Massama, Portugal',years:15,projects:15,photo:null,about1:'Sou Mauro Roberto F. Sebastião, Administrador de Sistemas de TI com mais de 15 anos de experiência em infraestrutura crítica, gestão de projectos e virtualização (VMware/Hyper-V), Microsoft 365/Azure e implementação de políticas de segurança incluindo CCTV, Biometria e Kaspersky. Certificado em CCNA, CompTIA A+ e Microsoft 365 Administrator.',about2:'Ao longo da minha carreira, projectei e construí Mini-Data Centers, administrei ambientes Windows Server (AD, DNS, GPO), implementei soluções de backup e disaster recovery com RTO inferior a 2 horas, e desenvolvi scripts de automação em PowerShell e Python que reduziram tarefas manuais em 70%.',about3:'Sou também Técnico de Segurança Eletrónica experiente em instalar, configurar e manter sistemas de CCTV (analógico, IP e híbrido), controlo de acesso biométrico, cercas eléctricas, interfonia e automação residencial/empresarial. Actualmente a residir em Lisboa, Portugal, onde procuro novos desafios profissionais.'},
-experience:[
-{id:1,role:'Administrador de Sistemas de TI',company:'Academia BAI',location:'Morro Bento, Luanda — Angola',date:'Fev 2022 — Actualmente',current:true,desc:['Gestão de Infraestrutura: Administração de Windows Server (AD, DNS, GPO) e virtualização (VMware/Hyper-V), garantindo 99.9% de disponibilidade.','Segurança Cibernética: Implementação de políticas (firewall, Kaspersky, CFTV) que reduziram incidentes em 40%.','Automação & Eficiência: Scripts PowerShell/Python para reduzir 70% de tarefas manuais.','Backup & Disaster Recovery: Políticas Veeam com RTO < 2h.','Office 365: Administrador Global de Microsoft 365.','Gestão de Redes: Configuração e monitorização (Zabbix), desempenho ótimo.','Treinamento & Documentação: Manuais de TI e formação de equipas.','Procurement Estratégico: Aquisição de hardware/software, optimizando custos em 30%.'],tags:['Windows Server','AD/DNS/GPO','VMware','Hyper-V','Kaspersky','Microsoft 365','PowerShell','Python','Veeam','Zabbix','CCTV']},
-{id:2,role:'Técnico de TI e Segurança Eletrónica',company:'VIDA DIGITAL LDA',location:'Luanda, Angola',date:'Mar 2020 — Fev 2022',current:false,desc:['Instalação de sistemas de CCTV (câmeras analógicas, IP e híbridas).','Instalação e configuração de controlo de acesso biométrico.','Passagem de cabos e organização de infraestrutura.','Configuração de DVRs, NVRs e câmeras IP com acesso remoto.','Manutenção preventiva e corretiva de sistemas de segurança.','Manutenção de cercas eléctricas e instalação de portões automáticos.','Reparação e assistência informática.'],tags:['CCTV','DVR/NVR','Controlo de Acesso','Biometria','Cablagem','Cercas Eléctricas','Portões Automáticos']},
-{id:3,role:'Administrador de Sistemas de TI e Segurança Eletrónica',company:'Faculdade de Economia UAN & Pinto Bastos',location:'Luanda, Angola',date:'Nov 2012 — Mar 2020',current:false,desc:['Projecção e construção do Mini-Data Center, reduzindo custos em 30% e suportando 500+ utilizadores.','Gestão do orçamento de TI (OGE) e procurement de hardware/software.','Implementação completa de CCTV (câmeras analógicas, IP e híbridas).','Instalação de controlo de acesso (biométrico, cartões, senhas, fechaduras electrónicas).','Configuração de DVRs, NVRs e câmeras IP com acesso remoto.','Inspecções periódicas e manutenção corretiva dos sistemas.'],tags:['Mini-Data Center','Windows Server','CCTV','Controlo de Acesso','DVR/NVR','Procurement','DRP']},
-{id:4,role:'Técnico de Sistemas',company:'DIGITAIS-ANGOLA',location:'Luanda, Angola',date:'2012',current:false,desc:['Reparação de computadores e impressoras profissionais XEROX.','Técnico do SIGES — Sistema de Gestão Superior Integrado para universidades.'],tags:['Hardware','XEROX','SIGES','Suporte Técnico']},
-{id:5,role:'Técnico de TI / Gerente de Documentação',company:'ZICAI GRUPO INFORNET & HAUT DE GAMME',location:'Luanda, Angola',date:'Mar 2008 — Nov 2012',current:false,desc:['Padronização de processos técnicos, aumentando eficiência em 25%.','Instalação e configuração de sistemas CCTV e controlo de acesso.','Integração de sistemas de segurança com redes e plataformas de monitoramento.','Configuração de softwares de vigilância remota.'],tags:['CCTV','Segurança Eletrónica','Documentação','Redes','Monitoramento']}
-],
-skills:[
-{id:1,name:'Sistemas Operativos & Servidores',icon:'fas fa-server',level:95,tags:['Windows Server 2008-2022','Active Directory','DNS/DHCP','GPO','WSUS','Linux','Ubuntu']},
-{id:2,name:'Virtualização & Cloud',icon:'fas fa-cloud',level:85,tags:['VMware vSphere/ESXi','Hyper-V','Microsoft Azure','Office 365','SharePoint']},
-{id:3,name:'Redes & Comunicações',icon:'fas fa-network-wired',level:88,tags:['Cisco CCNA','TCP/IP','VLAN','VPN','Firewall','Data & Voice Networks']},
-{id:4,name:'CCTV & Segurança Eletrónica',icon:'fas fa-camera',level:90,tags:['CCTV Analógico/IP/Híbrido','DVR/NVR','Controlo de Acesso','Biometria','Cercas Eléctricas','Interfonia','Portões Automáticos']},
-{id:5,name:'Scripting & Automação',icon:'fas fa-code',level:75,tags:['PowerShell','Python','Bash','Automação']},
-{id:6,name:'Segurança & Backup',icon:'fas fa-shield-alt',level:85,tags:['Kaspersky Admin Center','Veeam','Disaster Recovery','Firewall','Cyber Security']}
-],
-certifications:[
-{id:1,name:'CompTIA A+',issuer:'CompTIA',year:'Certificado',icon:'fas fa-certificate'},
-{id:2,name:'Cisco CCNA',issuer:'Cisco',year:'Certificado',icon:'fas fa-network-wired'},
-{id:3,name:'Microsoft 365 Administrator',issuer:'Microsoft',year:'Certificado',icon:'fab fa-microsoft'},
-{id:4,name:'Kaspersky Server Administration',issuer:'Kaspersky Lab',year:'Certificado',icon:'fas fa-shield-alt'},
-{id:5,name:'VMware ESXi Administration',issuer:'VMware',year:'Certificado',icon:'fas fa-server'},
-{id:6,name:'Técnico em Electrónica e Telecomunicações',issuer:'ITEL — Luanda',year:'2003–2007',icon:'fas fa-microchip'},
-{id:7,name:'Informática de Gestão Financeira',issuer:'ISAF — Lisboa',year:'2022–Actual',icon:'fas fa-graduation-cap'},
-{id:8,name:'SharePoint Administration',issuer:'Microsoft',year:'Certificado',icon:'fab fa-microsoft'}
-],
-gallery:[],
-projects:[
-{id:1,title:'Mini-Data Center — Faculdade de Economia UAN',desc:'Projecção, construção e gestão do Mini-Data Center da Faculdade de Economia da UAN. Reduziu custos operacionais em 30% e suportou mais de 500 utilizadores simultâneos.',tags:['Data Center','Windows Server','Virtualização','Networking']},
-{id:2,title:'Mini-Data Center — Pinto Bastos Angola',desc:'Projecção e construção do Mini-Data Center para o Grupo Pinto Bastos, incluindo infraestrutura de rede, virtualização e políticas de segurança.',tags:['Data Center','VMware','Segurança','Backup']},
-{id:3,title:'15+ Projectos de CCTV & Automação Empresarial',desc:'Implementação de mais de 15 sistemas de vigilância CCTV, controlo de acesso, automação residencial e empresarial, cercas eléctricas e interfonia em Angola.',tags:['CCTV','Controlo de Acesso','Automação','Biometria','Interfonia']},
-{id:4,title:'Programa de Alfabetização Digital',desc:'Minicursos gratuitos de alfabetização digital incluindo Introdução ao Word, Excel e TI do Utilizador Final, contribuindo para a inclusão digital da comunidade.',tags:['Formação','Microsoft Office','Inclusão Digital','Voluntariado']}
-]
-};}
+let D = (() => {
+  try { return JSON.parse(localStorage.getItem('mspf_v2') || 'null') || JSON.parse(JSON.stringify(DEF)); }
+  catch(e) { return JSON.parse(JSON.stringify(DEF)); }
+})();
 
-let D=getD();
+let loggedIn = false;
+let lang = D.lang || 'pt';
 
-function renderAll(){renderPro();renderSkills();renderTimeline();renderGal();renderProjs();renderCerts();}
-
-function renderPro(){
-  const p=D.profile;
-  document.getElementById('ap1').textContent=p.about1;
-  document.getElementById('ap2').textContent=p.about2;
-  document.getElementById('ap3').textContent=p.about3;
-  document.getElementById('loc-v').textContent=p.location;
-  document.getElementById('em-v').textContent=p.email;
-  document.getElementById('ph-v').textContent=p.phone;
-  if(p.photo)document.getElementById('prof-photo').innerHTML=`<img src="${p.photo}" alt="${p.name}">`;
+function persist() {
+  D.lang = lang;
+  try { localStorage.setItem('mspf_v2', JSON.stringify(D)); } catch(e) {}
 }
 
-function renderSkills(){
-  document.getElementById('skills-grid').innerHTML=D.skills.map(s=>`
-    <div class="skill-card">
-      <div class="skill-icon"><i class="${s.icon}"></i></div>
-      <div class="skill-name">${s.name}</div>
-      <div><div class="sbl"><span>Proficiência</span><span>${s.level}%</span></div>
-      <div class="sbr"><div class="sbf" style="width:${s.level}%"></div></div></div>
-      <div class="tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+// ── RENDER ────────────────────────────────────────────────────
+function render() {
+  const parts = D.name.split(' ');
+  const first = parts[0];
+  const rest = parts.slice(1).join(' ');
+  document.getElementById('hn').innerHTML = `${first}<br><span>${rest}</span>`;
+  document.getElementById('hs').textContent = D.title + ' · Cyber Security · CCTV · Microsoft 365';
+  document.getElementById('sy').textContent = D.years;
+  document.getElementById('sp').textContent = D.projects;
+  document.getElementById('ab-sum').textContent = D.summary;
+  document.getElementById('ab-loc').textContent = D.location;
+  document.getElementById('ab-email').textContent = D.email;
+  document.getElementById('ab-phone').textContent = D.phone;
+  document.getElementById('c-email').textContent = D.email;
+  document.getElementById('c-phone').textContent = D.phone;
+  document.getElementById('c-loc').textContent = D.location;
+  document.getElementById('c-li').href = D.linkedin;
+  document.getElementById('fn').textContent = D.name;
+  document.getElementById('fe').textContent = D.email;
+  document.getElementById('fe').href = 'mailto:' + D.email;
+
+  if (D.photo) {
+    const img = document.getElementById('photo-img');
+    img.src = D.photo;
+    img.style.display = 'block';
+    document.getElementById('photo-initials').style.display = 'none';
+  }
+  applyThemeVars(D.theme);
+  renderSkills();
+  renderTimeline();
+  renderGallery();
+}
+
+function applyThemeVars(t) {
+  const r = document.documentElement;
+  r.style.setProperty('--primary', t.p);
+  r.style.setProperty('--accent', t.a);
+  r.style.setProperty('--accent2', t.a2);
+  r.style.setProperty('--accent3', t.a3);
+}
+
+function skIcon(n) {
+  n = n.toLowerCase();
+  if(n.includes('windows')||n.includes('server')||n.includes('ad ')||n.includes('dns')) return '🖥️';
+  if(n.includes('vmware')||n.includes('hyper')) return '☁️';
+  if(n.includes('365')||n.includes('azure')||n.includes('sharepoint')) return '🔷';
+  if(n.includes('cisco')||n.includes('rede')||n.includes('ccna')) return '🌐';
+  if(n.includes('cctv')||n.includes('câmer')||n.includes('camera')) return '📹';
+  if(n.includes('kaspersky')||n.includes('cyber')||n.includes('segur')) return '🔒';
+  if(n.includes('power')||n.includes('python')||n.includes('script')) return '⚡';
+  if(n.includes('backup')||n.includes('veeam')||n.includes('dr')) return '💾';
+  if(n.includes('biometr')||n.includes('acesso')||n.includes('controlo')) return '🔑';
+  if(n.includes('zabbix')||n.includes('monitor')) return '📊';
+  if(n.includes('cerca')||n.includes('portão')||n.includes('cablag')) return '🔧';
+  return '🛠️';
+}
+
+function renderSkills() {
+  document.getElementById('sk-grid').innerHTML = D.skills.map(s => `
+    <div class="sk-card">
+      <div class="sk-icon">${skIcon(s.n)}</div>
+      <div class="sk-name">${s.n}</div>
+      <div class="sk-bar"><div class="sk-fill" style="width:0%" data-w="${s.v}%"></div></div>
+      <div class="sk-pct">${s.v}%</div>
     </div>`).join('');
 }
 
-function renderTimeline(){
-  document.getElementById('timeline').innerHTML=D.experience.map((e,i)=>`
-    <div class="tli" style="animation-delay:${i*0.1}s">
-      <div class="tld ${e.current?'cur':''}"></div>
-      <div class="tl-date">${e.date}${e.current?' <span style="color:var(--green);font-size:0.6rem;">● Actual</span>':''}</div>
-      <div class="tl-role">${e.role}</div>
-      <div class="tl-co"><i class="fas fa-building" style="opacity:0.4;margin-right:0.4rem;font-size:0.75rem;"></i>${e.company} — <span style="color:var(--text3);font-size:0.73rem;">${e.location||''}</span></div>
-      <ul class="tl-desc">${e.desc.map(d=>`<li>${d}</li>`).join('')}</ul>
-      <div class="tl-tags">${e.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+function renderTimeline() {
+  document.getElementById('tl').innerHTML = D.experience.map(e => `
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">${e.date}</div>
+      <div class="tl-title">${e.title}</div>
+      <div class="tl-co">${e.co}</div>
+      <div class="tl-desc">${e.desc}</div>
+      <div class="tl-tags">${e.tags.map(t=>`<span class="tl-tag">${t}</span>`).join('')}</div>
     </div>`).join('');
 }
 
-function renderGal(){
-  const g=D.gallery,grid=document.getElementById('gal-grid');
-  if(!g.length){grid.innerHTML=`<div class="gi" style="grid-column:span 3;height:200px;"><div class="gph"><i class="fas fa-images"></i><span>Galeria vazia — faça login como Admin para adicionar fotos e vídeos dos seus trabalhos de CCTV, Data Centers e projectos</span></div></div>`;return;}
-  grid.innerHTML=g.map((item,i)=>{
-    const cls=i===0?'wide':(i===3?'tall':'');
-    return `<div class="gi ${cls}" onclick="openLb('${item.url}',${item.type==='video'})">
-      ${item.type==='video'?`<video src="${item.url}" muted loop autoplay playsinline></video>`:`<img src="${item.url}" alt="${item.caption||''}" loading="lazy">`}
-      <div class="go"><div class="gc">${item.caption||''}</div></div></div>`;
-  }).join('');
+function renderGallery() {
+  const g = document.getElementById('gal');
+  if (!D.gallery || !D.gallery.length) {
+    g.innerHTML = `<div class="gal-empty"><div class="gal-empty-icon">📷</div><p>Ainda sem fotos. Faça login como admin para adicionar.</p></div>`;
+    return;
+  }
+  g.innerHTML = D.gallery.map((it,i) =>
+    it.t === 'video'
+      ? `<div class="gal-it" onclick="openLB('video','${i}')"><video src="${it.s}" muted playsinline></video></div>`
+      : `<div class="gal-it" onclick="openLB('image','${i}')"><img src="${it.s}" alt="Projeto ${i+1}" loading="lazy"></div>`
+  ).join('');
 }
 
-function renderProjs(){
-  document.getElementById('proj-grid').innerHTML=D.projects.map((p,i)=>`
-    <div class="pc"><div class="pc-num">0${i+1}</div><div class="pc-title">${p.title}</div>
-    <div class="pc-desc">${p.desc}</div>
-    <div class="tags" style="margin-top:1rem;">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div></div>`).join('');
+// ── LANG ─────────────────────────────────────────────────────
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-pt],[data-en]').forEach(el => {
+    const t = el.getAttribute('data-'+l);
+    if (t) el.textContent = t;
+  });
+  document.querySelectorAll('[data-placeholder-pt],[data-placeholder-en]').forEach(el => {
+    const ph = el.getAttribute('data-placeholder-'+l);
+    if (ph) el.placeholder = ph;
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === l));
+  persist();
 }
 
-function renderCerts(){
-  document.getElementById('certs-grid').innerHTML=D.certifications.map(c=>`
-    <div class="cc"><div class="ci"><i class="${c.icon}"></i></div>
-    <div class="cn">${c.name}</div><div class="ciss">${c.issuer}</div>
-    <div class="cyr">${c.year}</div></div>`).join('');
+// ── AUTH ─────────────────────────────────────────────────────
+function openLogin() {
+  if (loggedIn) { openAdmin(); return; }
+  document.getElementById('loginModal').classList.add('open');
+}
+function closeLogin() { document.getElementById('loginModal').classList.remove('open'); }
+function doLogin() {
+  if (document.getElementById('le').value === D.adminEmail && document.getElementById('lp').value === D.adminPass) {
+    loggedIn = true; closeLogin();
+    document.getElementById('admBtn').textContent = '⚙️ Admin';
+    openAdmin(); toast('✅ Bem-vindo, Mauro!', 'ok');
+  } else toast('❌ Credenciais inválidas', 'err');
 }
 
-// NAV
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50));
-function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
-function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
-function toggleMenu(){
-  const nl=document.querySelector('.nav-links'),nc=document.querySelector('.nav-cta');
-  const op=nl.style.display==='flex';
-  if(op){nl.style.display='';nc.style.display='';}
-  else{Object.assign(nl.style,{display:'flex',flexDirection:'column',position:'absolute',top:'60px',left:'0',right:'0',background:'var(--bg)',padding:'1.5rem 2rem',borderBottom:'1px solid var(--border)',zIndex:'99',gap:'1rem'});
-  Object.assign(nc.style,{display:'flex',position:'absolute',top:'210px',left:'0',right:'0',background:'var(--bg)',padding:'1rem 2rem',borderBottom:'1px solid var(--border)',zIndex:'99'});}
-}
+function openAdmin() { loadAdminForms(); document.getElementById('adminPanel').classList.add('open'); }
+function closeAdmin() { document.getElementById('adminPanel').classList.remove('open'); }
 
-// INTERSECTION OBSERVER
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.07});
-document.querySelectorAll('.fi2').forEach(el=>obs.observe(el));
-
-// AUTH
-function openLogin(){document.getElementById('login-mo').classList.add('active');setTimeout(()=>document.getElementById('apwd').focus(),100);}
-function closeMo(id){document.getElementById(id).classList.remove('active');}
-function tryLogin(){
-  const p=document.getElementById('apwd').value,er=document.getElementById('login-err');
-  if(p===D.password){closeMo('login-mo');document.getElementById('apwd').value='';openAdmin();}
-  else{er.style.display='block';er.textContent='Password incorrecta.';setTimeout(()=>er.style.display='none',2500);}
-}
-function openAdmin(){document.getElementById('admin-panel').classList.add('active');loadAdF();renderAdLists();}
-function closeAdmin(){document.getElementById('admin-panel').classList.remove('active');}
-
-function swTab(n,btn){
-  document.querySelectorAll('.atb').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.as').forEach(s=>s.classList.remove('active'));
+function switchTab(name, btn) {
+  document.querySelectorAll('.atab-c').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.atab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
-  document.getElementById('tab-'+n).classList.add('active');
 }
 
-function loadAdF(){
-  const p=D.profile;
-  document.getElementById('an').value=p.name||'';document.getElementById('ati').value=p.title||'';
-  document.getElementById('asu').value=p.subtitle||'';document.getElementById('aem').value=p.email||'';
-  document.getElementById('aph').value=p.phone||'';document.getElementById('alo').value=p.location||'';
-  document.getElementById('ayr').value=p.years||'';document.getElementById('apr').value=p.projects||'';
-  document.getElementById('ab1').value=p.about1||'';document.getElementById('ab2').value=p.about2||'';
-  document.getElementById('ab3').value=p.about3||'';
+function loadAdminForms() {
+  document.getElementById('a_name').value = D.name;
+  document.getElementById('a_title').value = D.title;
+  document.getElementById('a_email').value = D.email;
+  document.getElementById('a_phone').value = D.phone;
+  document.getElementById('a_location').value = D.location;
+  document.getElementById('a_linkedin').value = D.linkedin;
+  document.getElementById('a_years').value = D.years;
+  document.getElementById('a_projects').value = D.projects;
+  document.getElementById('a_summary').value = D.summary;
+  loadSkAdmin();
+  loadExpAdmin();
+  loadGalAdmin();
+  if (D.photo) document.getElementById('pp-preview').innerHTML = `<img src="${D.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--accent)">`;
 }
 
-function savePro(){
-  D.profile={...D.profile,name:document.getElementById('an').value,title:document.getElementById('ati').value,subtitle:document.getElementById('asu').value,email:document.getElementById('aem').value,phone:document.getElementById('aph').value,location:document.getElementById('alo').value,years:parseInt(document.getElementById('ayr').value)||15,projects:parseInt(document.getElementById('apr').value)||15,about1:document.getElementById('ab1').value,about2:document.getElementById('ab2').value,about3:document.getElementById('ab3').value};
-  sv(D);renderPro();toast('✅ Perfil guardado!');
+// SKILLS ADMIN
+function loadSkAdmin() {
+  document.getElementById('sk-admin').innerHTML = D.skills.map((s,i) => `
+    <div style="display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem">
+      <input class="fi2" style="flex:2" value="${s.n}" onchange="D.skills[${i}].n=this.value">
+      <input class="fi2" style="flex:0 0 70px" type="number" min="0" max="100" value="${s.v}" onchange="D.skills[${i}].v=parseInt(this.value)||0">
+      <button onclick="D.skills.splice(${i},1);loadSkAdmin()" style="background:#fee2e2;color:#dc2626;border:none;padding:7px 11px;border-radius:7px;cursor:pointer;font-weight:700">✕</button>
+    </div>`).join('');
 }
-function handlePhoto(inp){
-  const f=inp.files[0];if(!f)return;
-  const r=new FileReader();r.onload=e=>{D.profile.photo=e.target.result;sv(D);renderPro();toast('📸 Foto actualizada!');};r.readAsDataURL(f);
+function addSkill() { D.skills.push({n:'Nova Skill',v:80}); loadSkAdmin(); }
+
+// EXP ADMIN
+function loadExpAdmin() {
+  document.getElementById('exp-admin').innerHTML = D.experience.map((e,i) => `
+    <div style="background:var(--bg);border-radius:10px;padding:1rem;margin-bottom:.8rem;border:1px solid var(--border)">
+      <div style="display:flex;justify-content:space-between;margin-bottom:.5rem">
+        <strong style="font-size:.86rem;color:var(--primary)">${e.title||'Nova entrada'}</strong>
+        <button onclick="D.experience.splice(${i},1);loadExpAdmin()" style="background:#fee2e2;color:#dc2626;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:.76rem;font-weight:700">✕ Remover</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.5rem">
+        <input class="fi2" placeholder="Período" value="${e.date}" onchange="D.experience[${i}].date=this.value">
+        <input class="fi2" placeholder="Título" value="${e.title}" onchange="D.experience[${i}].title=this.value">
+      </div>
+      <input class="fi2" style="margin-bottom:.5rem" placeholder="Empresa" value="${e.co}" onchange="D.experience[${i}].co=this.value">
+      <textarea class="ft2" style="min-height:70px" onchange="D.experience[${i}].desc=this.value">${e.desc}</textarea>
+      <input class="fi2" style="margin-top:.5rem" placeholder="Tags (vírgula)" value="${e.tags.join(', ')}" onchange="D.experience[${i}].tags=this.value.split(',').map(t=>t.trim()).filter(Boolean)">
+    </div>`).join('');
+}
+function addExp() { D.experience.unshift({date:'',title:'',co:'',desc:'',tags:[]}); loadExpAdmin(); }
+
+// PHOTO
+function handleProfilePhoto(inp) {
+  const f = inp.files[0]; if(!f) return;
+  const r = new FileReader();
+  r.onload = e => {
+    D.photo = e.target.result;
+    document.getElementById('pp-preview').innerHTML = `<img src="${D.photo}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--accent)">`;
+    const img = document.getElementById('photo-img');
+    img.src = D.photo; img.style.display='block';
+    document.getElementById('photo-initials').style.display='none';
+  };
+  r.readAsDataURL(f);
 }
 
-function addExp(){
-  const role=document.getElementById('er').value.trim();if(!role){toast('⚠️ Preencha o cargo');return;}
-  D.experience.unshift({id:Date.now(),role,company:document.getElementById('ec').value.trim(),location:document.getElementById('el').value.trim(),date:document.getElementById('ed').value.trim(),current:document.getElementById('ecur').checked,desc:document.getElementById('edes').value.split('\n').filter(Boolean),tags:document.getElementById('etg').value.split(',').map(t=>t.trim()).filter(Boolean)});
-  sv(D);renderTimeline();renderAdLists();['er','ec','el','ed','edes','etg'].forEach(id=>document.getElementById(id).value='');document.getElementById('ecur').checked=false;toast('✅ Experiência adicionada!');
-}
-function delExp(id){D.experience=D.experience.filter(e=>e.id!==id);sv(D);renderTimeline();renderAdLists();toast('🗑️ Removido');}
-
-function addSkill(){
-  const n=document.getElementById('sn2').value.trim();if(!n){toast('⚠️ Preencha o nome');return;}
-  D.skills.push({id:Date.now(),name:n,icon:document.getElementById('si').value.trim()||'fas fa-cog',level:parseInt(document.getElementById('sl').value)||75,tags:document.getElementById('st2').value.split(',').map(t=>t.trim()).filter(Boolean)});
-  sv(D);renderSkills();renderAdLists();['sn2','si','sl','st2'].forEach(id=>document.getElementById(id).value='');toast('✅ Adicionado!');
-}
-function delSkill(id){D.skills=D.skills.filter(s=>s.id!==id);sv(D);renderSkills();renderAdLists();toast('🗑️ Removido');}
-
-function handleGal(inp){
-  const files=Array.from(inp.files);let done=0;
-  files.forEach(f=>{
-    const r=new FileReader();r.onload=e=>{
-      const cap=prompt(`Legenda para "${f.name}":`)||'';
-      D.gallery.push({id:Date.now()+Math.random(),url:e.target.result,type:f.type.startsWith('video')?'video':'image',caption:cap});
-      done++;if(done===files.length){sv(D);renderGal();renderAdLists();toast(`✅ ${files.length} ficheiro(s) adicionado(s)!`);}
-    };r.readAsDataURL(f);
+// GALLERY
+function handleGallery(inp) {
+  Array.from(inp.files).forEach(f => {
+    const r = new FileReader();
+    r.onload = e => {
+      D.gallery.push({s:e.target.result, t: f.type.startsWith('video')?'video':'image'});
+      renderGallery(); loadGalAdmin();
+    };
+    r.readAsDataURL(f);
   });
 }
-function delGal(id){D.gallery=D.gallery.filter(g=>g.id!==id);sv(D);renderGal();renderAdLists();toast('🗑️ Removido');}
-
-function addCert(){
-  const n=document.getElementById('cn2').value.trim();if(!n){toast('⚠️ Preencha o nome');return;}
-  D.certifications.push({id:Date.now(),name:n,issuer:document.getElementById('ciss').value.trim(),year:document.getElementById('cyr2').value.trim(),icon:document.getElementById('cion').value.trim()||'fas fa-certificate'});
-  sv(D);renderCerts();renderAdLists();['cn2','ciss','cyr2','cion'].forEach(id=>document.getElementById(id).value='');toast('✅ Adicionado!');
-}
-function delCert(id){D.certifications=D.certifications.filter(c=>c.id!==id);sv(D);renderCerts();renderAdLists();toast('🗑️ Removido');}
-
-function addProj(){
-  const t=document.getElementById('pt2').value.trim();if(!t){toast('⚠️ Preencha o título');return;}
-  D.projects.push({id:Date.now(),title:t,desc:document.getElementById('pd2').value.trim(),tags:document.getElementById('ptg2').value.split(',').map(t=>t.trim()).filter(Boolean)});
-  sv(D);renderProjs();renderAdLists();['pt2','pd2','ptg2'].forEach(id=>document.getElementById(id).value='');toast('✅ Adicionado!');
-}
-function delProj(id){D.projects=D.projects.filter(p=>p.id!==id);sv(D);renderProjs();renderAdLists();toast('🗑️ Removido');}
-
-function renderAdLists(){
-  document.getElementById('exp-list').innerHTML=D.experience.map(e=>`<div class="acard" style="margin-top:0.8rem;display:flex;justify-content:space-between;align-items:start;"><div><strong style="color:var(--white);font-size:0.87rem;">${e.role}</strong><br><span style="color:var(--text3);font-size:0.73rem;">${e.company} · ${e.date}</span></div><button class="btn-d" onclick="delExp(${e.id})">Remover</button></div>`).join('');
-  document.getElementById('sk-list').innerHTML=D.skills.map(s=>`<div class="acard" style="margin-top:0.8rem;display:flex;justify-content:space-between;align-items:center;"><div><i class="${s.icon}" style="color:var(--accent);margin-right:0.5rem;"></i><strong style="color:var(--white);">${s.name}</strong><span style="color:var(--text3);font-size:0.7rem;margin-left:0.7rem;">${s.level}%</span></div><button class="btn-d" onclick="delSkill(${s.id})">Remover</button></div>`).join('');
-  document.getElementById('gal-list').innerHTML=D.gallery.length?D.gallery.map(g=>`<div style="background:var(--surface);border:1px solid var(--border);overflow:hidden;">${g.type==='video'?`<video src="${g.url}" style="width:100%;height:90px;object-fit:cover;" muted></video>`:`<img src="${g.url}" style="width:100%;height:90px;object-fit:cover;" alt="">`}<div style="padding:0.4rem;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:0.63rem;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:70px;">${g.caption||'–'}</span><button class="btn-d" style="padding:0.2rem 0.4rem;font-size:0.6rem;" onclick="delGal(${g.id})">✕</button></div></div>`).join(''):'<p style="color:var(--text3);font-size:0.77rem;">Sem media.</p>';
-  document.getElementById('cert-list').innerHTML=D.certifications.map(c=>`<div class="acard" style="margin-top:0.8rem;display:flex;justify-content:space-between;align-items:center;"><div><i class="${c.icon}" style="color:var(--accent);margin-right:0.5rem;"></i><strong style="color:var(--white);">${c.name}</strong><span style="color:var(--text3);font-size:0.7rem;"> — ${c.issuer}, ${c.year}</span></div><button class="btn-d" onclick="delCert(${c.id})">Remover</button></div>`).join('');
-  document.getElementById('proj-list').innerHTML=D.projects.map(p=>`<div class="acard" style="margin-top:0.8rem;display:flex;justify-content:space-between;align-items:start;"><strong style="color:var(--white);font-size:0.87rem;">${p.title}</strong><button class="btn-d" onclick="delProj(${p.id})">Remover</button></div>`).join('');
+function loadGalAdmin() {
+  const p = document.getElementById('gal-adm-prev');
+  p.innerHTML = D.gallery.map((it,i) => `
+    <div style="position:relative">
+      ${it.t==='video'
+        ? `<video src="${it.s}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px"></video>`
+        : `<img src="${it.s}" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px">`}
+      <button onclick="D.gallery.splice(${i},1);renderGallery();loadGalAdmin()" style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:.72rem;line-height:1;display:flex;align-items:center;justify-content:center">✕</button>
+    </div>`).join('');
 }
 
-function chgPwd(){
-  const c=document.getElementById('pc3').value,n=document.getElementById('pn').value,f=document.getElementById('pcf').value;
-  if(c!==D.password){toast('❌ Password actual incorrecta');return;}
-  if(n!==f){toast('❌ Passwords não coincidem');return;}
-  if(n.length<6){toast('❌ Mínimo 6 caracteres');return;}
-  D.password=n;sv(D);['pc3','pn','pcf'].forEach(id=>document.getElementById(id).value='');toast('✅ Password alterada!');
+// COLORS
+function applyTheme(el) {
+  document.querySelectorAll('.sw').forEach(s=>s.classList.remove('sel'));
+  el.classList.add('sel');
+  D.theme = {p:el.dataset.p, a:el.dataset.a, a2:el.dataset.a2, a3:el.dataset.a3};
+  applyThemeVars(D.theme);
 }
-function expData(){
-  const b=new Blob([JSON.stringify(D,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`portfolio-backup-${new Date().toISOString().slice(0,10)}.json`;a.click();toast('✅ Backup exportado!');
+function applyCustomColor() {
+  const hex = document.getElementById('chex').value || document.getElementById('cpicker').value;
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) { toast('Formato inválido. Use #RRGGBB','err'); return; }
+  D.theme.a = hex;
+  applyThemeVars(D.theme);
 }
-function impData(inp){
-  const f=inp.files[0];if(!f)return;
-  const r=new FileReader();r.onload=e=>{try{D=JSON.parse(e.target.result);sv(D);renderAll();loadAdF();renderAdLists();toast('✅ Importado!');}catch{toast('❌ Ficheiro inválido');}};r.readAsText(f);
+document.getElementById('cpicker').addEventListener('input', e => document.getElementById('chex').value = e.target.value);
+
+// SAVE
+function saveAll() {
+  D.name = document.getElementById('a_name').value;
+  D.title = document.getElementById('a_title').value;
+  D.email = document.getElementById('a_email').value;
+  D.phone = document.getElementById('a_phone').value;
+  D.location = document.getElementById('a_location').value;
+  D.linkedin = document.getElementById('a_linkedin').value;
+  D.years = document.getElementById('a_years').value;
+  D.projects = document.getElementById('a_projects').value;
+  D.summary = document.getElementById('a_summary').value;
+  persist();
+  render();
+  toast('✅ Alterações guardadas com sucesso!','ok');
 }
 
-// LIGHTBOX
-function openLb(url,isV){
-  const lb=document.getElementById('lb'),img=document.getElementById('lb-img'),vid=document.getElementById('lb-vid');
-  lb.classList.add('active');
-  if(isV){img.style.display='none';vid.style.display='block';vid.src=url;}
-  else{vid.style.display='none';img.style.display='block';img.src=url;}
-}
-function closeLb(){document.getElementById('lb').classList.remove('active');document.getElementById('lb-vid').pause();}
+// ── CV / COVER LETTER ─────────────────────────────────────────
+function hex2rgb(h){return[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]}
 
-// CV GENERATOR
-let docT='cv';
-function updDoc(r){
-  docT=r.value;const isC=docT!=='cv';
-  ['fg-co','fg-ref','fg-pos'].forEach(id=>document.getElementById(id).style.display=isC?'block':'none');
-  document.getElementById('fg-cvt').style.display=isC?'none':'block';
-}
+function genCV() {
+  const co = document.getElementById('cv-co').value;
+  const ref = document.getElementById('cv-ref').value;
+  const l = document.getElementById('cv-lang').value;
+  const {jsPDF} = window.jspdf;
+  const doc = new jsPDF({unit:'mm',format:'a4'});
+  const W=210,M=20,CW=170;
+  let y=20;
+  const [pr,pg,pb]=hex2rgb(D.theme.p);
+  const [ar,ag,ab]=hex2rgb(D.theme.a);
 
-function prevDoc(){
-  const p=D.profile,prev=document.getElementById('prev-content');
-  if(docT==='cv'){
-    prev.innerHTML=`<div style="font-family:Arial,sans-serif;"><h3 style="color:#1a1a4e;border-bottom:2px solid #c8a96e;padding-bottom:4px;margin-bottom:8px;">${p.name}</h3><p style="font-size:11px;color:#888;margin-bottom:6px;">${p.title}</p><p style="font-size:10px;color:#555;margin-bottom:10px;">${p.email} | ${p.phone} | ${p.location}</p><b style="font-size:11px;color:#1a1a4e;">EXPERIÊNCIA (resumo)</b><br><br>${D.experience.slice(0,2).map(e=>`<b style="font-size:11px;">${e.role}</b><span style="font-size:10px;color:#888;"> @ ${e.company} (${e.date})</span>`).join('<br>')}<br><br><b style="font-size:11px;color:#1a1a4e;">COMPETÊNCIAS</b><br><span style="font-size:10px;color:#555;">${D.skills.map(s=>s.name).join(' · ')}</span></div>`;
-  } else {
-    const co=document.getElementById('co-name').value||'[EMPRESA]',pos=document.getElementById('co-pos').value||'[CARGO]';
-    const txt=docT==='cpt'?`Exmo(a) Senhor(a),\n\nVenho manifestar o meu interesse na posição de ${pos} na ${co}...\n\nCom os melhores cumprimentos,\n${p.name}`:`Dear Hiring Manager,\n\nI am writing to express my interest in the ${pos} position at ${co}...\n\nYours sincerely,\n${p.name}`;
-    prev.innerHTML=`<pre style="font-family:Georgia,serif;font-size:11px;white-space:pre-wrap;">${txt}</pre>`;
+  doc.setFillColor(pr,pg,pb); doc.rect(0,0,W,50,'F');
+  doc.setTextColor(255,255,255);
+  doc.setFont('helvetica','bold'); doc.setFontSize(22); doc.text(D.name,M,22);
+  doc.setFontSize(10); doc.setFont('helvetica','normal'); doc.text(D.title,M,31);
+  doc.setFontSize(9);
+  doc.text(`${D.email}  |  ${D.phone}  |  ${D.location}`,M,39);
+  doc.text(D.linkedin,M,46);
+  y=62;
+
+  const sec=(t)=>{
+    doc.setFillColor(ar,ag,ab); doc.rect(M,y,CW,7,'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(9.5);
+    doc.setTextColor(255,255,255); doc.text(t.toUpperCase(),M+3,y+5.2);
+    y+=11; doc.setTextColor(55,55,55);
+  };
+
+  sec(l==='pt'?'Objetivo Profissional':'Professional Objective');
+  doc.setFont('helvetica','normal'); doc.setFontSize(9);
+  const sl=doc.splitTextToSize(D.summary,CW);
+  doc.text(sl,M,y); y+=sl.length*3.9+5;
+
+  sec(l==='pt'?'Experiência Profissional':'Professional Experience');
+  D.experience.forEach(e=>{
+    if(y>255){doc.addPage();y=20;}
+    doc.setFont('helvetica','bold'); doc.setFontSize(9.5); doc.setTextColor(pr,pg,pb);
+    doc.text(e.title,M,y); y+=4.5;
+    doc.setFont('helvetica','italic'); doc.setFontSize(8.5); doc.setTextColor(ar,ag,ab);
+    doc.text(`${e.co}  |  ${e.date}`,M,y); y+=4;
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(55,55,55);
+    const dl=doc.splitTextToSize(e.desc,CW);
+    doc.text(dl,M,y); y+=dl.length*3.5+5;
+  });
+
+  sec(l==='pt'?'Educação':'Education');
+  [{d:'2003–2007',c:'Técnico em Electrónica e Telecomunicações',i:'ITEL — Luanda, Angola'},
+   {d:'2022–Atualmente',c:'Informática de Gestão Financeira',i:'ISAF — Luanda, Angola'}].forEach(e=>{
+    doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(pr,pg,pb);
+    doc.text(e.c,M,y); y+=4.5;
+    doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(55,55,55);
+    doc.text(`${e.i}  |  ${e.d}`,M,y); y+=6;
+  });
+
+  sec(l==='pt'?'Competências Técnicas':'Technical Skills');
+  const cols=[[],[]];
+  D.skills.forEach((s,i)=>cols[i%2].push(s));
+  const mr=Math.max(cols[0].length,cols[1].length);
+  for(let r=0;r<mr;r++){
+    [0,1].forEach(c=>{
+      if(!cols[c][r])return;
+      doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(55,55,55);
+      doc.text(`• ${cols[c][r].n} (${cols[c][r].v}%)`,M+c*(CW/2),y);
+    }); y+=4.2;
   }
+  y+=4;
+
+  sec(l==='pt'?'Idiomas':'Languages');
+  doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(55,55,55);
+  doc.text(l==='pt'?'Português — Nativo  |  Inglês — B2 (Intermediário)':'Portuguese — Native  |  English — B2 (Intermediate)',M,y);
+
+  doc.setFontSize(7.5); doc.setTextColor(160,160,160);
+  doc.text(l==='pt'?`Gerado em ${new Date().toLocaleDateString('pt-PT')}`:`Generated ${new Date().toLocaleDateString('en-GB')}`,M,290);
+  if(ref) doc.text(`Ref: ${ref}`,W-M-30,290);
+  doc.save(`CV_Mauro_Sebastiao${co?'_'+co.replace(/\s/g,'_'):''}.pdf`);
+  toast('✅ CV gerado!','ok');
 }
 
-function genDoc(){
-  prevDoc();
-  const p=D.profile;let html='';
-  if(docT==='cv'){
-    const skills=D.skills.map(s=>`<tr><td style="padding:3px 8px 3px 0;font-weight:bold;color:#1a1a4e;font-size:11px;white-space:nowrap;">${s.name}</td><td style="font-size:11px;padding:3px 0;">${s.tags.join(', ')}</td></tr>`).join('');
-    const exp=D.experience.map(e=>`<div style="margin-bottom:16px;page-break-inside:avoid;"><div style="display:flex;justify-content:space-between;margin-bottom:3px;"><div><div style="font-weight:bold;color:#1a1a4e;font-size:12px;">${e.role}</div><div style="color:#555;font-size:11px;">${e.company} — ${e.location||''}</div></div><div style="font-size:10px;color:#888;white-space:nowrap;margin-left:8px;">${e.date}</div></div><ul style="margin:3px 0 0 14px;padding:0;font-size:11px;color:#333;">${e.desc.map(d=>`<li style="margin-bottom:1px;">${d}</li>`).join('')}</ul><div style="margin-top:5px;">${e.tags.map(t=>`<span style="display:inline-block;background:#eef2ff;color:#3730a3;font-size:9px;padding:1px 5px;border-radius:2px;margin:1px;">${t}</span>`).join('')}</div></div>`).join('');
-    const certs=D.certifications.map(c=>`<div style="margin-bottom:4px;font-size:11px;"><strong style="color:#1a1a4e;">${c.name}</strong> — ${c.issuer} (${c.year})</div>`).join('');
-    const projs=D.projects.map(pr=>`<div style="margin-bottom:6px;font-size:11px;"><strong style="color:#1a1a4e;">• ${pr.title}</strong><br>${pr.desc}</div>`).join('');
-    html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>CV — ${p.name}</title><style>body{font-family:Arial,sans-serif;font-size:12px;color:#222;margin:0;}.page{width:21cm;min-height:29.7cm;margin:0 auto;padding:1.5cm;background:#fff;}h2{font-size:12px;color:#1a1a4e;text-transform:uppercase;letter-spacing:1px;border-bottom:2px solid #c8a96e;padding-bottom:3px;margin:15px 0 8px;}@media print{body{print-color-adjust:exact;-webkit-print-color-adjust:exact;}.page{margin:0;padding:1cm;}}</style></head><body><div class="page"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:18px;padding-bottom:14px;border-bottom:3px solid #1a1a4e;"><div><h1 style="font-size:20px;color:#1a1a4e;margin:0 0 3px;">${p.name}</h1><div style="font-size:12px;color:#c8a96e;font-weight:bold;margin-bottom:5px;">${p.title}</div><div style="font-size:10.5px;color:#555;">📧 ${p.email} &nbsp;|&nbsp; 📞 ${p.phone} &nbsp;|&nbsp; 📍 ${p.location}<br>🔗 linkedin.com/in/mauro-sebastiao-74a62b1a</div></div>${p.photo?`<img src="${p.photo}" style="width:75px;height:85px;object-fit:cover;border:2px solid #c8a96e;" alt="">`:'<div style="width:75px;height:85px;background:#eee;border:2px solid #c8a96e;display:flex;align-items:center;justify-content:center;font-size:9px;color:#aaa;">Foto</div>'}</div><h2>Perfil Profissional</h2><p style="font-size:11px;line-height:1.6;margin:0 0 8px;">${p.about1}</p><h2>Experiência Profissional</h2>${exp}<h2>Competências Técnicas</h2><table style="width:100%;border-collapse:collapse;">${skills}</table><h2>Certificações &amp; Formação</h2>${certs}<h2>Projectos Destacados</h2>${projs}<h2>Idiomas</h2><div style="font-size:11px;"><strong>Português</strong> — Nativo &nbsp;&nbsp; <strong>Inglês</strong> — Intermediário</div></div><script>window.print();<\/script></body></html>`;
-  } else if(docT==='cpt'){
-    const co=document.getElementById('co-name').value||'[EMPRESA]',ref=document.getElementById('co-ref').value||'[REF]',pos=document.getElementById('co-pos').value||'[CARGO]';
-    const today=new Date().toLocaleDateString('pt-PT',{day:'numeric',month:'long',year:'numeric'});
-    html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Carta de Apresentação</title><style>body{font-family:Arial,sans-serif;font-size:12px;color:#222;margin:0;}.page{width:21cm;min-height:29.7cm;margin:0 auto;padding:2cm;background:#fff;}p{line-height:1.9;margin-bottom:0.8em;}@media print{.page{margin:0;padding:1.5cm;}}</style></head><body><div class="page"><div style="text-align:right;font-size:11px;color:#555;margin-bottom:3cm;"><strong style="font-size:14px;color:#1a1a4e;">${p.name}</strong><br>${p.location}<br>${p.phone}<br>${p.email}<br>${today}</div><div style="margin-bottom:1.5cm;"><strong>${co}</strong><br><span style="color:#555;">A/c Departamento de Recursos Humanos</span></div><p style="font-weight:bold;margin-bottom:1cm;">Assunto: Candidatura à posição de ${pos} — Ref.ª ${ref}</p><p>Exmo(a). Senhor(a),</p><p>Venho por este meio manifestar o meu interesse na posição de <strong>${pos}</strong> (Ref: ${ref}) anunciada pela <strong>${co}</strong>.</p><p>Sou Administrador de Sistemas de TI com mais de <strong>15 anos de experiência</strong> em infraestrutura crítica, gestão de projectos tecnológicos, virtualização (VMware/Hyper-V), Microsoft 365/Azure e implementação de políticas de segurança (CCTV, Kaspersky, Biometria). Detenho certificações em <strong>Cisco CCNA, CompTIA A+, Microsoft 365 Administrator e VMware ESXi</strong>.</p><p>Ao longo da minha carreira, destaco as seguintes realizações:</p><ul style="font-size:12px;line-height:1.9;"><li>Projecção e construção de <strong>Mini-Data Centers</strong> suportando 500+ utilizadores, com redução de 30% nos custos operacionais;</li><li>Implementação de scripts PowerShell/Python eliminando <strong>70% das tarefas manuais</strong>;</li><li>Políticas de segurança que reduziram incidentes cibernéticos em <strong>40%</strong>;</li><li>Garantia de <strong>99.9% de disponibilidade</strong> de sistemas críticos;</li><li>Mais de <strong>15 projectos</strong> de CCTV, controlo de acesso e automação empresarial.</li></ul><p>Estou a residir em Lisboa e disponível para início imediato. Gostaria de ter a oportunidade de discutir como as minhas competências podem contribuir para os objectivos da <strong>${co}</strong>.</p><p>Com os melhores cumprimentos,</p><p style="margin-top:2cm;"><strong>${p.name}</strong><br>${p.phone} | ${p.email}</p></div><script>window.print();<\/script></body></html>`;
-  } else {
-    const co=document.getElementById('co-name').value||'[COMPANY]',ref=document.getElementById('co-ref').value||'[REF]',pos=document.getElementById('co-pos').value||'[POSITION]';
-    const today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-    html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Cover Letter</title><style>body{font-family:Arial,sans-serif;font-size:12px;color:#222;margin:0;}.page{width:21cm;min-height:29.7cm;margin:0 auto;padding:2cm;background:#fff;}p{line-height:1.9;margin-bottom:0.8em;}@media print{.page{margin:0;padding:1.5cm;}}</style></head><body><div class="page"><div style="text-align:right;font-size:11px;color:#555;margin-bottom:3cm;"><strong style="font-size:14px;color:#1a1a4e;">${p.name}</strong><br>${p.location}<br>${p.phone}<br>${p.email}<br>${today}</div><div style="margin-bottom:1.5cm;"><strong>${co}</strong><br><span style="color:#555;">Human Resources Department</span></div><p style="font-weight:bold;margin-bottom:1cm;">Re: Application for ${pos} — Ref. ${ref}</p><p>Dear Hiring Manager,</p><p>I am writing to express my strong interest in the <strong>${pos}</strong> position (Ref: ${ref}) at <strong>${co}</strong>.</p><p>I am an IT Systems Administrator with over <strong>15 years of experience</strong> in critical infrastructure, project management, virtualisation (VMware/Hyper-V), Microsoft 365/Azure, and security policy implementation (CCTV, Kaspersky, Biometrics). I hold certifications in <strong>Cisco CCNA, CompTIA A+, Microsoft 365 Administrator, and VMware ESXi</strong>.</p><p>Key achievements throughout my career include:</p><ul style="font-size:12px;line-height:1.9;"><li>Design and construction of <strong>Mini-Data Centers</strong> supporting 500+ users, reducing operational costs by 30%;</li><li>PowerShell/Python automation scripts eliminating <strong>70% of manual tasks</strong>;</li><li>Security policies reducing cyber incidents by <strong>40%</strong>;</li><li>Maintaining <strong>99.9% system availability</strong> for critical infrastructure;</li><li>Over <strong>15 completed projects</strong> in CCTV, access control and business automation.</li></ul><p>Currently based in Lisbon, Portugal, and available for an immediate start. I would welcome the opportunity to discuss how my skills can contribute to <strong>${co}</strong>'s objectives.</p><p>Yours sincerely,</p><p style="margin-top:2cm;"><strong>${p.name}</strong><br>${p.phone} | ${p.email}</p></div><script>window.print();<\/script></body></html>`;
-  }
-  const w=window.open('','_blank');w.document.write(html);w.document.close();
-  toast('📄 Documento aberto — use Ctrl+P para guardar como PDF!');
+function genCover() {
+  const co = document.getElementById('cv-co').value||'Empresa';
+  const ref = document.getElementById('cv-ref').value||'N/A';
+  const l = document.getElementById('cv-lang').value;
+  const {jsPDF} = window.jspdf;
+  const doc = new jsPDF({unit:'mm',format:'a4'});
+  const W=210,M=25,CW=160;
+  const [pr,pg,pb]=hex2rgb(D.theme.p);
+  const [ar,ag,ab]=hex2rgb(D.theme.a);
+
+  doc.setFillColor(pr,pg,pb); doc.rect(0,0,W,32,'F');
+  doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(16);
+  doc.text(D.name,M,15);
+  doc.setFontSize(9); doc.setFont('helvetica','normal');
+  doc.text(`${D.email}  |  ${D.phone}  |  ${D.location}`,M,24);
+
+  let y=45;
+  doc.setTextColor(55,55,55); doc.setFont('helvetica','normal'); doc.setFontSize(9.5);
+  doc.text(l==='pt'?`Lisboa, ${new Date().toLocaleDateString('pt-PT')}`:`Lisbon, ${new Date().toLocaleDateString('en-GB')}`,M,y); y+=9;
+  doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.setTextColor(pr,pg,pb);
+  doc.text(l==='pt'?`Assunto: Candidatura${ref!='N/A'?' — Ref. '+ref:''}`:`Re: Application${ref!='N/A'?' — Ref. '+ref:''}`,M,y); y+=9;
+
+  const pts=l==='pt'?[
+    `Exmos. Srs. ${co},`,
+    `Venho por este meio manifestar o meu interesse em integrar a vossa equipa${ref!='N/A'?', relativamente à vaga com referência '+ref:''}. Com mais de 15 anos de experiência em Administração de Sistemas de TI, Segurança Eletrónica e Infraestrutura Crítica, acredito poder acrescentar valor significativo à vossa organização.`,
+    `Ao longo da minha carreira tive a oportunidade de gerir infraestruturas complexas, implementar políticas de cibersegurança que reduziram incidentes em 40%, construir Mini-Data Centers e implementar sistemas CCTV e controlo de acesso em ambientes com 500+ utilizadores. Sou certificado em CompTIA A+, Cisco CCNA e Microsoft 365 Administrator.`,
+    `Sou um profissional proativo, confiável e orientado à excelência operacional, com forte capacidade de liderança e formação de equipas, atualmente baseado em Lisboa, Portugal.`,
+    `Agradeço a atenção dispensada e fico ao vosso dispor para qualquer esclarecimento ou entrevista.\n\nCom os melhores cumprimentos,`,
+    D.name+'\n'+D.title
+  ]:[
+    `Dear ${co} Team,`,
+    `I am writing to express my interest in joining your organization${ref!='N/A'?', regarding the position referenced '+ref:''}. With over 15 years of experience in IT Systems Administration, Electronic Security, and Critical Infrastructure, I am confident I can bring significant value to your team.`,
+    `Throughout my career I have managed complex IT infrastructures, implemented cybersecurity policies that reduced incidents by 40%, built Mini-Data Centers, and deployed CCTV and access control systems in environments with 500+ users. I hold CompTIA A+, Cisco CCNA, and Microsoft 365 Administrator certifications.`,
+    `I am a proactive, reliable professional oriented toward operational excellence, with strong leadership and team training capabilities, currently based in Lisbon, Portugal.`,
+    `Thank you for your consideration. I look forward to the opportunity to discuss how my experience aligns with your needs.\n\nYours sincerely,`,
+    D.name+'\n'+D.title
+  ];
+
+  doc.setFont('helvetica','normal'); doc.setFontSize(9.5); doc.setTextColor(55,55,55);
+  pts.forEach(p=>{
+    const ls=doc.splitTextToSize(p,CW);
+    doc.text(ls,M,y); y+=ls.length*4.3+5;
+    if(y>275){doc.addPage();y=20;}
+  });
+  doc.setDrawColor(ar,ag,ab); doc.setLineWidth(.5); doc.line(M,y+2,M+55,y+2);
+
+  doc.save(`Carta_${co.replace(/\s/g,'_')}.pdf`);
+  toast('✅ Carta gerada!','ok');
 }
 
+// ── LIGHTBOX ─────────────────────────────────────────────────
+function openLB(type, i) {
+  const it = D.gallery[i];
+  document.getElementById('lb-c').innerHTML = type==='video'
+    ? `<video src="${it.s}" controls autoplay style="max-width:90vw;max-height:88vh;border-radius:8px"></video>`
+    : `<img src="${it.s}" style="max-width:90vw;max-height:88vh;border-radius:8px">`;
+  document.getElementById('lb').classList.add('open');
+}
+function closeLB(){document.getElementById('lb').classList.remove('open');document.getElementById('lb-c').innerHTML='';}
+
+// ── CONTACT ──────────────────────────────────────────────────
 function sendMsg(){
-  const n=document.getElementById('mn').value,e=document.getElementById('me').value,s=document.getElementById('ms').value,b=document.getElementById('mb').value;
-  if(!n||!e||!b){toast('⚠️ Preencha todos os campos');return;}
-  window.open(`mailto:${D.profile.email}?subject=${encodeURIComponent(s||'Contacto via Portfólio')}&body=${encodeURIComponent(`De: ${n} (${e})\n\n${b}`)}`);
-  toast('✅ A abrir o cliente de email...');
+  const n=document.getElementById('mn').value;
+  const e=document.getElementById('me').value;
+  const m=document.getElementById('mm').value;
+  if(!n||!e||!m){toast('Por favor preencha todos os campos','err');return;}
+  window.location.href=`mailto:${D.email}?subject=Contacto de ${encodeURIComponent(n)}&body=${encodeURIComponent(m+'\n\nDe: '+n+'\nEmail: '+e)}`;
+  toast('✅ A abrir email...','ok');
 }
 
-function toast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3200);
+// ── TOAST ─────────────────────────────────────────────────────
+function toast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='toast show '+type;
+  setTimeout(()=>t.className='toast',3500);
 }
 
-renderAll();
+// ── INIT ─────────────────────────────────────────────────────
+render();
+setLang(lang);
+
+// Animate skill bars
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sk-fill').forEach(f=>{
+        const w=f.dataset.w; f.style.width='0';
+        setTimeout(()=>f.style.width=w,150);
+      });
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.1});
+const skGrid=document.getElementById('sk-grid');
+if(skGrid) io.observe(skGrid);
+
+// Close lightbox on backdrop click
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLB();});
+// Close login on backdrop
+document.getElementById('loginModal').addEventListener('click',e=>{if(e.target===document.getElementById('loginModal'))closeLogin();});
+// Enter key on login
+document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
 </script>
 </body>
 </html>
